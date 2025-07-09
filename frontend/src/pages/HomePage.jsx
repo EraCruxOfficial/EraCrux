@@ -17,7 +17,7 @@ const HomePage = () => {
             </nav>
           </div>
           <div className="header-right">
-            <button className="live-btn">LIVE</button>
+            <button className="live-btn">Sign Up</button>
           </div>
         </div>
       </header>
@@ -35,8 +35,8 @@ const HomePage = () => {
             Harness the power of data to drive your business forward with our comprehensive analytics platform designed for modern enterprises.
           </p>
           <div className="hero-buttons">
-            <button className="btn-primary">Explore Solutions</button>
-            <button className="btn-secondary">Get Started</button>
+            <button className="btn-primary">Visualize your Data</button>
+            {/* <button className="btn-secondary">Get Started</button> */}
           </div>
         </div>
       </section>
@@ -152,6 +152,7 @@ const HomePage = () => {
 
         </div>
       </div>
+     
         </div>
     );
 };
