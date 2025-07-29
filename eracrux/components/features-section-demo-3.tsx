@@ -156,7 +156,7 @@ export const SkeletonThree = () => {
       <div className="w-full  mx-auto bg-transparent dark:bg-transparent group h-full">
         <div className="flex flex-1 w-full h-full flex-col space-y-2  relative">
           {/* TODO */}
-          <IconBrandInstagramFilled className="h-20 w-20 absolute z-10 inset-0 text-pink-500 m-auto " />
+          <IconBrandInstagramFilled className="h-20 w-20 absolute z-10 inset-0 text-blue-500 m-auto " />
           <img
             src="/instaPreview.jpeg"
             alt="header"
@@ -278,6 +278,8 @@ export const Globe = ({ className }: { className?: string }) => {
         // longitude latitude
         { location: [37.7595, -122.4367], size: 0.03 },
         { location: [40.7128, -74.006], size: 0.1 },
+        { location: [28.6129, 77.2295], size: 0.05 },
+
       ],
       onRender: (state) => {
         // Called on every animation frame.

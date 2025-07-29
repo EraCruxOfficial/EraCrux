@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 export default function Globe3D() {
   return (
     <section
-      className="relative w-full overflow-hidden bg-[#0a0613] pt-32 pb-10 font-light text-white antialiased md:pt-20 md:pb-16"
+      className="relative w-full overflow-hidden bg-[#0a0613] pt-12 pb-10 font-light text-white antialiased md:pt-20 md:pb-16"
       style={{
         background: 'linear-gradient(135deg, #0a0613 0%, #150d27 100%)',
         fontFamily: 'Poppins, sans-serif',
@@ -39,7 +39,7 @@ export default function Globe3D() {
           <h1 className="mx-auto mb-6 max-w-4xl text-4xl font-light md:text-5xl lg:text-7xl">
             Data That <span className='font-bold'>Decides</span>. {' '}
             <br />
-            <span className="bg-gradient-to-r from-blue-100 via-blue-500 to-blue-100 bg-clip-text font-bold text-transparent">Visualize </span> Signals. <br />
+            <span className="bg-gradient-to-r from-purple-200 via-purple-600 to-purple-200 bg-clip-text font-bold text-transparent">Visualize </span> Signals. <br />
             <span className='font-bold'>Amplify</span> Outcomes.
           </h1>
           <p className="mx-auto mb-10 max-w-2xl text-lg text-white/60 md:text-xl" style={{fontFamily: 'Inter, sans-serif'}}>

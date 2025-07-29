@@ -1,6 +1,8 @@
 import Header1 from '@/components/mvpblocks/header-1.tsx';
 import Globe3D from '@/components/mvpblocks/3dglobe.tsx';
 import FeaturesSectionDemo from '@/components/features-section-demo-3';
+import { Blog8 } from '@/components/blog8';
+import FooterGlow from '@/components/mvpblocks/footer-glow';
 import {
   Marquee,
   MarqueeContent,
@@ -16,6 +18,8 @@ export default function App() {
       <Header1 />
       <Globe3D />
       <FeaturesSectionDemo />
+      <Blog8 />
+      <FooterGlow />
       {/* <Marquee>
         <MarqueeFade side="left" />
         <MarqueeFade side="right" />
