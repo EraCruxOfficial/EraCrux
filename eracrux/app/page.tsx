@@ -1,5 +1,6 @@
 import Header1 from '@/components/mvpblocks/header-1.tsx';
 import Globe3D from '@/components/mvpblocks/3dglobe.tsx';
+import FeaturesSectionDemo from '@/components/features-section-demo-3';
 import {
   Marquee,
   MarqueeContent,
@@ -9,10 +10,12 @@ import {
 
 export default function App() {
   return (
-    <div >
+    <div className='bg-[#0a0613] font-light text-white antialiased min-h-screen' style={{
+        background: 'linear-gradient(135deg, #0a0613 0%, #150d27 100%)',
+      }}>
       <Header1 />
       <Globe3D />
-      
+      <FeaturesSectionDemo />
       {/* <Marquee>
         <MarqueeFade side="left" />
         <MarqueeFade side="right" />

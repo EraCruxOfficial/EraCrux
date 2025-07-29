@@ -89,6 +89,7 @@ export default function Header1() {
             : 'rgba(255, 255, 255, 0.8)'
           : 'transparent',
         boxShadow: isScrolled ? '0 8px 32px rgba(0, 0, 0, 0.1)' : 'none',
+        fontFamily: `Poppins, sans-serif`,
       }}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

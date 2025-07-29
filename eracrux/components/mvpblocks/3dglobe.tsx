@@ -9,6 +9,7 @@ export default function Globe3D() {
       className="relative w-full overflow-hidden bg-[#0a0613] pt-32 pb-10 font-light text-white antialiased md:pt-20 md:pb-16"
       style={{
         background: 'linear-gradient(135deg, #0a0613 0%, #150d27 100%)',
+        fontFamily: 'Poppins, sans-serif',
       }}
     >
       <div
@@ -41,7 +42,7 @@ export default function Globe3D() {
             <span className="bg-gradient-to-r from-blue-100 via-blue-500 to-blue-100 bg-clip-text font-bold text-transparent">Visualize </span> Signals. <br />
             <span className='font-bold'>Amplify</span> Outcomes.
           </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-lg text-white/60 md:text-xl">
+          <p className="mx-auto mb-10 max-w-2xl text-lg text-white/60 md:text-xl" style={{fontFamily: 'Inter, sans-serif'}}>
            Clean, organize, and visualize your data effortlessly with our intuitive platform — featuring interactive dashboards, bar charts, pie charts, and more to turn raw data into clear insights.
           </p>
 
