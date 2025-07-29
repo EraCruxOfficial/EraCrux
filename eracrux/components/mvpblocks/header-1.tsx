@@ -100,9 +100,9 @@ export default function Header1() {
           >
             <Link href="/" className="flex items-center space-x-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-800 to-blue-900">
-                <img src="/eracruxLogo.png" alt="EraCrux Logo" className="h-full w-full" />
+                <img src="/eracrux-white-trans.png" alt="EraCrux Logo" className="h-full w-full" />
                 </div>
-              <span className="bg-gradient-to-r from-gray-100 via-gray-400 to-gray-800 bg-clip-text text-xl font-bold text-transparent">
+              <span className="bg-gradient-to-r from-gray-100 via-gray-400 to-gray-200 bg-clip-text text-xl font-bold text-transparent">
                EraCrux
               </span>
             </Link>
@@ -178,7 +178,7 @@ export default function Header1() {
                 <span>Get Started</span>
                 <ArrowRight className="h-4 w-4" />
               </Link> */}
-              <ShimmerButton>Get Started</ShimmerButton>
+              <ShimmerButton>Start for free</ShimmerButton>
             </motion.div>
           </div>
 

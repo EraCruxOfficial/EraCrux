@@ -38,7 +38,7 @@ export default function Globe3D() {
           <h1 className="mx-auto mb-6 max-w-4xl text-4xl font-light md:text-5xl lg:text-7xl">
             Data That <span className='font-bold'>Decides</span>. {' '}
             <br />
-            <span className="text-[#9b87f5] font-bold">Simplify </span> Signals. <br />
+            <span className="bg-gradient-to-r from-blue-100 via-blue-500 to-blue-100 bg-clip-text font-bold text-transparent">Visualize </span> Signals. <br />
             <span className='font-bold'>Amplify</span> Outcomes.
           </h1>
           <p className="mx-auto mb-10 max-w-2xl text-lg text-white/60 md:text-xl">
@@ -50,7 +50,7 @@ export default function Globe3D() {
               href="/docs/get-started"
               className="neumorphic-button hover:shadow-[0_0_20px_rgba(155, 135, 245, 0.5)] relative w-full overflow-hidden rounded-full border border-white/10 bg-gradient-to-b from-white/10 to-white/5 px-8 py-4 text-white shadow-lg transition-all duration-300 hover:border-[#9b87f5]/30 sm:w-auto"
             >
-              Get Started
+              Start Free Trial
             </Link>
             <a
               href="#how-it-works"
