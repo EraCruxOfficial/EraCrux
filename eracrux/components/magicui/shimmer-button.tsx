@@ -17,7 +17,7 @@ export const ShimmerButton = React.forwardRef<
 >(
   (
     {
-      shimmerColor = "#000000",
+      shimmerColor = "#ffffff",
       shimmerSize = "0.08em",
       shimmerDuration = "3s",
       borderRadius = "100px",
@@ -59,8 +59,9 @@ export const ShimmerButton = React.forwardRef<
         >
           {/* rotating shimmer */}
           <div className="absolute inset-0 h-[100cqh] animate-shimmerSlide [aspect-ratio:1] [border-radius:0] [mask:none]">
-            <div className="absolute -inset-full w-auto rotate-0 animate-spinAround [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))] [translate:0_0]" />
-          </div>
+  <div className="absolute -inset-full w-auto rotate-0 animate-spinAround [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))] [translate:0_0]" />
+</div>
+
         </div>
 
         {children}
