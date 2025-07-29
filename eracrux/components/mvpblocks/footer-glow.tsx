@@ -37,7 +37,7 @@ export default function FooterGlow() {
         <div className="flex flex-col items-center md:items-start">
           <a href="#" className="mb-4 flex items-center gap-2">
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-rose-400 to-rose-700 text-2xl font-extrabold text-white shadow-md">
-              <img src="/icon.png" alt="" className="rounded-xl" />
+              <img src="/icon.png" alt="" className="rounded-lg" />
             </span>
             <span className="bg-gradient-to-r from-gray-100 via-gray-400 to-gray-200 bg-clip-text text-xl font-bold text-transparent">
               EraCrux

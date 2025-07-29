@@ -34,7 +34,7 @@ const Blog8 = ({
       author: "Lakshita Gupta",
       published: "15 July 2025",
       url: "https://eracrux.hashnode.dev/top-data-analytics-tools-to-master-in-2025",
-      image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
+      image: "/googledash.png",
       tags: ["Tools", "Analytics", "Data Science"],
     },
     {
@@ -45,7 +45,7 @@ const Blog8 = ({
       author: "Rashi Gupta",
       published: "22 June 2025",
       url: "https://eracrux.hashnode.dev/introduction-to-data-analytics-a-beginners-guide",
-      image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
+      image: "/blog1.png",
       tags: ["Beginner's Guide", "Data Analytics"],
     },
   ],
@@ -111,9 +111,9 @@ const Blog8 = ({
                   <a href={post.url} target="_blank" className="block">
                     <div className="aspect-16/9 overflow-clip rounded-lg border border-border">
                       <img
-                        src={post.image}
-                        alt={post.title}
-                        className="h-full w-full object-cover transition-opacity duration-200 fade-in hover:opacity-70"
+                      src={post.image}
+                      alt={post.title}
+                      className="h-full w-full object-cover transition-opacity duration-200 fade-in hover:opacity-70"
                       />
                     </div>
                   </a>
