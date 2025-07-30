@@ -42,9 +42,9 @@ export default function Globe3D() {
             <span className="bg-gradient-to-r from-purple-200 via-purple-600 to-purple-200 bg-clip-text font-bold text-transparent">Visualize </span> Signals. <br />
             <span className='font-bold'>Amplify</span> Outcomes.
           </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-lg text-white/60 md:text-xl" style={{fontFamily: 'Inter, sans-serif'}}>
+          {/* <p className="mx-auto mb-10 max-w-2xl text-lg text-white/60 md:text-xl" style={{fontFamily: 'Inter, sans-serif'}}>
            Clean, organize, and visualize your data effortlessly with our intuitive platform — featuring interactive dashboards, bar charts, pie charts, and more to turn raw data into clear insights.
-          </p>
+          </p> */}
 
           <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:mb-0 sm:flex-row">
             <Link
