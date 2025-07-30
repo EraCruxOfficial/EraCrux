@@ -30,7 +30,7 @@ export default function FeaturesSectionDemo() {
         "Follow us on Instagram for the latest updates, tips, and community highlights!",
       skeleton: <SkeletonThree />,
       className:
-        "col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800",
+        "col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800 border-b",
     },
     {
       title: "Your Data is Secure",
