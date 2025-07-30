@@ -2,7 +2,7 @@
 
 export default function FooterGlow() {
   return (
-    <footer className="relative z-10 mt-8 overflow-hidden pb-8">
+    <footer className="relative z-10 mt-8 overflow-hidden pb-8" style={{fontFamily: 'Poppins, sans-serif'}}>
       <style jsx global>{`
   .glass {
     backdrop-filter: blur(6px) saturate(180%);
