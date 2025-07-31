@@ -6,8 +6,8 @@ export const signIn = async (email: string, password: string) => {
     try {
         await auth.api.signInEmail({
             body: {
-                email:'orcdev@test.com',
-                password:'password123" // Replace with actual email and password,
+                email,
+                password,
             }
         })
         return {

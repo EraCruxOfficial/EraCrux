@@ -179,7 +179,7 @@ export default function Header1() {
                 <span>Get Started</span>
                 <ArrowRight className="h-4 w-4" />
               </Link> */}
-              <ShimmerButton>Start for free</ShimmerButton>
+             <Link href="/signup"> <ShimmerButton> Start for free</ShimmerButton></Link>
             </motion.div>
           </div>
 
