@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form"
 import { cn } from "@/lib/utils"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
+import { createAuthClient } from "better-auth/client"
+const authClient = createAuthClient()
 import {
   Card,
   CardContent,
@@ -49,22 +51,63 @@ export function LoginForm({
       password: "",
     },
   })
-
-  // 2. Define a submit handler.
- async function onSubmit(values: z.infer<typeof formSchema>) {
-  setIsLoading(true)
-
-  const { success, message } = await signIn(values.email, values.password)
-  if (success) {
-    toast.success(message)
-    router.push("/dashboard")
-  } else {
-    toast.error(message)
+  async function signInWithGithub() {
+    setIsLoading(true)
+    try {
+      const result = await authClient.signIn.social({
+        provider: "github",
+        callbackURL: `/dashboard`,
+      })
+      if ('error' in result && result.error) {
+        toast.error(result.error.message || "An unknown error occurred.")
+      } else {
+        toast.success("Signin in progress!")
+        router.push("/dashboard")
+      }
+    } catch (error) {
+      const e = error as Error
+      toast.error(e.message || "An unknown error occurred.")
+    } finally {
+      setIsLoading(false)
+    }
   }
-  setIsLoading(false)
-}
+  const signInWithGoogle = async () => {
+    setIsLoading(true)
+    try {
+      const result = await authClient.signIn.social({
+        provider: "google",
+        callbackURL: `/dashboard`,
+      })
+
+      if ('error' in result && result.error) {
+        toast.error(result.error.message || "An unknown error occurred.")
+      } else {
+        toast.success("Signin in progress!")
+        router.push("/dashboard")
+      }
+    } catch (error) {
+      const e = error as Error
+      toast.error(e.message || "An unknown error occurred.")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true)
+
+    const { success, message } = await signIn(values.email, values.password)
+    if (success) {
+      toast.success(message)
+      router.push("/dashboard")
+    } else {
+      toast.error(message)
+    }
+    setIsLoading(false)
+  }
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <div className={cn("flex flex-col gap-6", className)} {...props} style={{ fontFamily: "Inter, sans-serif" }}>
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-xl">Welcome back</CardTitle>
@@ -77,12 +120,12 @@ export function LoginForm({
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
               <div className="grid gap-6">
                 <div className="flex flex-col gap-4">
-                  <Button variant="outline" className="w-full">
-                    <IconBrandGithub />
+                  <Button variant="outline" className="w-full" onClick={signInWithGithub} disabled={isLoading}>
+                    {isLoading ? <Loader2 className="animate-spin mr-2" size={16} /> : <IconBrandGithub />}
                     Login with GitHub
                   </Button>
-                  <Button variant="outline" className="w-full">
-                    <IconBrandGoogle />
+                  <Button variant="outline" className="w-full" type="button" onClick={signInWithGoogle} disabled={isLoading}>
+                    {isLoading ? <Loader2 className="animate-spin mr-2" size={16} /> : <IconBrandGoogle />}
                     Login with Google
                   </Button>
                 </div>
@@ -100,7 +143,7 @@ export function LoginForm({
                         <FormItem>
                           <FormLabel>Email</FormLabel>
                           <FormControl>
-                            <Input placeholder="d@gmail.com" {...field} type="email"/>
+                            <Input placeholder="d@gmail.com" {...field} type="email" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -110,18 +153,18 @@ export function LoginForm({
                   <div className="grid gap-3">
                     <div className="flex flex-col gap-1">
                       <FormField
-                      control={form.control}
-                      name="password"
-                      render={({ field }) => (
-                        <FormItem >
-                          <FormLabel>Password</FormLabel>
-                          <FormControl>
-                            <Input placeholder="*********" {...field} type="password"/>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                          <FormItem >
+                            <FormLabel>Password</FormLabel>
+                            <FormControl>
+                              <Input placeholder="*********" {...field} type="password" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                       <a
                         href="#"
                         className="ml-auto text-sm underline-offset-4 hover:underline"
@@ -131,7 +174,7 @@ export function LoginForm({
                     </div>
                   </div>
                   <Button type="submit" className="w-full" disabled={isLoading}>
-                    {isLoading ? <Loader2 className="animate-spin" size={4}/> : "Login"}
+                    {isLoading ? <Loader2 className="animate-spin" /> : "Login"}
                   </Button>
                 </div>
                 <div className="text-center text-sm">
