@@ -28,9 +28,9 @@ export const signUp = async (email: string, password: string, username: string) 
     try {
         await auth.api.signUpEmail({
             body: {
-                email:'orcdev@test.com',
-                password:'password123',
-                name: 'username'
+                email,
+                password,
+                name: username
             }
         })
 
