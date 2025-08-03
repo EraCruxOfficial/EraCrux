@@ -57,7 +57,7 @@ export function LoginForm({
     try {
       const result = await authClient.signIn.social({
         provider: "github",
-        callbackURL: `/dashboard`,
+        // callbackURL: `/dashboard`,
       })
       if ('error' in result && result.error) {
         toast.error(result.error.message || "An unknown error occurred.")
@@ -166,12 +166,12 @@ export function LoginForm({
                           </FormItem>
                         )}
                       />
-                      <a
-                        href="#"
+                      <Link
+                        href="/forgot-password"
                         className="ml-auto text-sm underline-offset-4 hover:underline"
                       >
                         Forgot your password?
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <Button type="submit" className="w-full" disabled={isLoading}>

@@ -1,4 +1,4 @@
-import { LoginForm } from "@/components/forms/login-form"
+import { ResetPasswordForm } from "@/components/forms/reset-password-form"
 
 export default function LoginPage() {
   return (
@@ -10,7 +10,7 @@ export default function LoginPage() {
           </div>
           <span className="bg-gradient-to-r from-gray-100 via-gray-300 to-gray-200 bg-clip-text text-xl font-bold text-transparent" style={{fontFamily:"Poppins, sans serif"}}>EraCrux</span>
         </a>
-        <LoginForm />
+        <ResetPasswordForm />
       </div>
     </div>
   )
