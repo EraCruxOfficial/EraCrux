@@ -24,7 +24,7 @@ import {
 
 import { z } from "zod";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
@@ -38,6 +38,7 @@ export function ForgotPasswordForm({
     ...props
 }: React.ComponentProps<"div">) {
     const [isLoading, setIsLoading] = useState(false);
+    const [cooldownSeconds, setCooldownSeconds] = useState(0);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -46,7 +47,29 @@ export function ForgotPasswordForm({
         },
     });
 
+    // Cooldown timer effect
+    useEffect(() => {
+        let interval: NodeJS.Timeout;
+        
+        if (cooldownSeconds > 0) {
+            interval = setInterval(() => {
+                setCooldownSeconds((prev) => prev - 1);
+            }, 1000);
+        }
+
+        return () => {
+            if (interval) {
+                clearInterval(interval);
+            }
+        };
+    }, [cooldownSeconds]);
+
     async function onSubmit(values: z.infer<typeof formSchema>) {
+        if (cooldownSeconds > 0) {
+            toast.error(`Please wait ${cooldownSeconds} seconds before sending another request.`);
+            return;
+        }
+
         setIsLoading(true);
 
         const { error } = await authClient.forgetPassword({
@@ -66,11 +89,14 @@ export function ForgotPasswordForm({
             }
         } else {
             toast.success("Password reset email sent.");
+            // Start 30-second cooldown on successful request
+            setCooldownSeconds(30);
         }
 
         setIsLoading(false);
     }
 
+    const isButtonDisabled = isLoading || cooldownSeconds > 0;
 
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -100,13 +126,20 @@ export function ForgotPasswordForm({
                                         )}
                                     />
                                 </div>
-                                <Button type="submit" className="w-full" disabled={isLoading}>
+                                <Button type="submit" className="w-full" disabled={isButtonDisabled}>
                                     {isLoading ? (
                                         <Loader2 className="size-4 animate-spin" />
+                                    ) : cooldownSeconds > 0 ? (
+                                        `Wait ${cooldownSeconds}s`
                                     ) : (
                                         "Reset Password"
                                     )}
                                 </Button>
+                                {cooldownSeconds > 0 && (
+                                    <p className="text-sm text-muted-foreground text-center">
+                                        You can send another request in {cooldownSeconds} seconds
+                                    </p>
+                                )}
                             </div>
                             <div className="text-center text-sm">
                                 Don&apos;t have an account?{" "}
