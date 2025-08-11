@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Button } from "./ui/button"
+import { Button } from "../ui/button"
 import { createAuthClient } from "better-auth/client"
 import { toast } from "sonner"
 import { Loader2, LogOutIcon } from "lucide-react"

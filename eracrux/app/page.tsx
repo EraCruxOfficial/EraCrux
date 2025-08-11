@@ -1,7 +1,7 @@
 import Header1 from '@/components/mvpblocks/header-1';
 import Globe3D from '@/components/mvpblocks/3dglobe';
-import FeaturesSectionDemo from '@/components/features-section-demo-3';
-import { Blog8 } from '@/components/blog8';
+import FeaturesSectionDemo from '@/components/homepage-components/features-section-demo-3';
+import { Blog8 } from '@/components/homepage-components/blog8';
 import FooterGlow from '@/components/mvpblocks/footer-glow';
 
 export default function App() {
