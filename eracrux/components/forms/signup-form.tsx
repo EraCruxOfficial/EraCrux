@@ -59,13 +59,13 @@ export function SignupForm({
         try {
             const result = await authClient.signIn.social({
                 provider: "github",
-                callbackURL: `/dashboard`,
+                callbackURL: `/workspaces`,
             })
             if ('error' in result && result.error) {
                 toast.error(result.error.message || "An unknown error occurred.")
             } else {
                 toast.success("Signin in progress!")
-                router.push("/dashboard")
+                router.push("/workspaces")
             }
         } catch (error) {
             const e = error as Error
@@ -79,14 +79,14 @@ export function SignupForm({
         try {
             const result = await authClient.signIn.social({
                 provider: "google",
-                callbackURL: `/dashboard`,
+                callbackURL: `/workspaces`,
             })
 
             if ('error' in result && result.error) {
                 toast.error(result.error.message || "An unknown error occurred.")
             } else {
                 toast.success("Signin in progress!")
-                router.push("/dashboard")
+                router.push("/workspaces")
             }
         } catch (error) {
             const e = error as Error
@@ -103,7 +103,7 @@ export function SignupForm({
         const { success, message } = await signUp(values.email, values.password, values.username)
         if (success) {
             toast.success(message)
-            router.push("/dashboard")
+            router.push("/workspaces")
         } else {
             toast.error(message)
         }

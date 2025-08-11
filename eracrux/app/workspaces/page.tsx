@@ -13,7 +13,7 @@ export default async function DashboardPage() {
  
     return (
         <div>
-            <h1>Welcome {session.user.name}</h1>
+            {/* <h1>Welcome {session.user.name}</h1> */}
             <Logout/>
         </div>
     )
