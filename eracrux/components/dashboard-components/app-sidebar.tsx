@@ -1,25 +1,14 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+'use client'
+import { Home } from "lucide-react"
 import { NavUser } from "./nav-user"
+import { usePathname } from "next/navigation"
 
 import {
-    IconCamera,
-    IconChartBar,
-    IconDashboard,
-    IconDatabase,
-    IconFileAi,
-    IconFileDescription,
-    IconFileWord,
-    IconFolder,
-    IconHelp,
-    IconInnerShadowTop,
-    IconListDetails,
-    IconReport,
-    IconSearch,
-    IconSettings,
-    IconUsers,
     IconGitBranch,
+    IconFolder,
+    IconUsers,
     IconCirclePlusFilled,
-    IconMail
+    IconSparkles
 } from "@tabler/icons-react"
 import {
     Sidebar,
@@ -33,9 +22,6 @@ import {
     SidebarFooter,
     SidebarHeader,
 } from "@/components/ui/sidebar"
-import { Logout } from "./logout"
-import { Button } from "@react-email/components"
-
 
 const data = {
     user: {
@@ -57,17 +43,17 @@ const items = [
         icon: IconGitBranch,
     },
     {
-        title: "Dashboard",
+        title: "CruxAI (coming soon)",
         url: "#",
-        icon: IconDashboard,
+        icon: IconSparkles,
     },
     {
-        title: "Projects",
+        title: "Projects (coming soon)",
         url: "#",
         icon: IconFolder,
     },
     {
-        title: "Team",
+        title: "Team (coming soon)",
         url: "#",
         icon: IconUsers,
     },
@@ -88,10 +74,12 @@ interface AppSidebarProps {
 }
 
 export function AppSidebar({ user }: AppSidebarProps) {
+    const pathname = usePathname()
+
     const safeUser: User = {
         name: user.name,
         email: user.email,
-        image: user.image ?? undefined, // normalize null to undefined
+        image: user.image ?? undefined,
     }
 
     return (
@@ -110,11 +98,9 @@ export function AppSidebar({ user }: AppSidebarProps) {
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>
-
             </SidebarHeader>
 
             <SidebarContent>
-
                 <SidebarGroup>
                     <SidebarMenu>
                         <SidebarMenuItem className="flex items-center gap-2">
@@ -125,26 +111,38 @@ export function AppSidebar({ user }: AppSidebarProps) {
                                 <IconCirclePlusFilled />
                                 <a href="/workspaces/upload"><span>Quick Create</span></a>
                             </SidebarMenuButton>
-
                         </SidebarMenuItem>
                     </SidebarMenu>
+
                     <SidebarGroupLabel>Application</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
-                            {items.map((item) => (
-                                <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton asChild>
-                                        <a href={item.url}>
-                                            <item.icon />
-                                            <span>{item.title}</span>
-                                        </a>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            ))}
+                            {items.map((item) => {
+                                const isActive = pathname === item.url
+
+                                return (
+                                    <SidebarMenuItem key={item.title}>
+                                        <SidebarMenuButton
+                                            asChild
+                                            className={
+                                                isActive
+                                                    ? "hover:bg-secondary/50 hover:text-secondary-foreground bg-secondary text-secondary-foreground"
+                                                    : ""
+                                            }
+                                        >
+                                            <a href={item.url}>
+                                                <item.icon />
+                                                <span>{item.title}</span>
+                                            </a>
+                                        </SidebarMenuButton>
+                                    </SidebarMenuItem>
+                                )
+                            })}
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
+
             <SidebarFooter>
                 <NavUser user={safeUser} />
             </SidebarFooter>
