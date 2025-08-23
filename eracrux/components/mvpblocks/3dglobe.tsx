@@ -57,7 +57,7 @@ export default function Globe3D() {
               href="/login"
               className="flex w-full items-center justify-center gap-2 text-white/70 transition-colors hover:text-white sm:w-auto"
             >
-              <span>Join Our Waitlist</span>
+              <span>Learn about us</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
