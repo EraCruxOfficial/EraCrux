@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 import fs from "fs";
+import { randomUUID } from "crypto";
 
 export async function POST(req: Request) {
   const formData = await req.formData();
@@ -14,15 +15,14 @@ export async function POST(req: Request) {
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
 
-  const uploadDir = path.join(process.cwd(), "uploads");
-
-  // Ensure uploads folder exists
+  const uploadDir = path.join(process.cwd(),"public", "uploads");
   if (!fs.existsSync(uploadDir)) {
     await mkdir(uploadDir, { recursive: true });
   }
 
-  const filePath = path.join(uploadDir, file.name);
+  const id = randomUUID();
+  const filePath = path.join(uploadDir, `${id}.csv`);
   await writeFile(filePath, buffer);
 
-  return NextResponse.json({ success: true, filePath });
+  return NextResponse.json({ success: true, id });
 }

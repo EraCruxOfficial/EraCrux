@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const session = await auth.api.getSession({ headers: await headers() });
   if (!session) {
-    redirect("/sign-in");
+    redirect("/login");
   }
   return (
     <SidebarProvider style={{ fontFamily: 'Inter, sans-serif' }}>

@@ -1,12 +1,14 @@
-'use client';
+"use client";
 
 import { Dropzone, DropzoneContent, DropzoneEmptyState } from '@/components/ui/kibo-ui/dropzone';
 import { UploadIcon } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function IntegrationPage() {
   const [files, setFiles] = useState<File[] | undefined>();
   const [uploadStatus, setUploadStatus] = useState<string | null>(null);
+  const router = useRouter();
 
   const handleDrop = async (files: File[]) => {
     setFiles(files);
@@ -24,7 +26,8 @@ export default function IntegrationPage() {
         const data = await res.json();
 
         if (res.ok) {
-          setUploadStatus(`✅ File uploaded: ${data.filePath}`);
+          setUploadStatus("✅ File uploaded! Redirecting...");
+          router.push(`/workspaces/dashboard/${data.id}`);
         } else {
           setUploadStatus(`❌ Error: ${data.error}`);
         }
@@ -44,7 +47,7 @@ export default function IntegrationPage() {
               <UploadIcon size={24} />
             </div>
             <div className="text-left">
-              <p className="font-medium text-sm">Upload a file</p>
+              <p className="font-medium text-sm">Upload a CSV file</p>
               <p className="text-muted-foreground text-xs">
                 Drag and drop or click to upload
               </p>
@@ -53,7 +56,6 @@ export default function IntegrationPage() {
         </DropzoneEmptyState>
         <DropzoneContent />
       </Dropzone>
-
       {uploadStatus && (
         <p className="text-sm text-muted-foreground">{uploadStatus}</p>
       )}
