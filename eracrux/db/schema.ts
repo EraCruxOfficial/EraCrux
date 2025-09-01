@@ -66,6 +66,24 @@ export const verification = pgTable("verification", {
     ),
 });
 
+export const csvFile = pgTable("csv_file", {
+    id: text("id").primaryKey(),
+    filename: text("filename").notNull(),
+    originalName: text("original_name").notNull(),
+    s3Url: text("s3_url").notNull(),
+    s3Key: text("s3_key").notNull(),
+    fileSize: integer("file_size"),
+    contentType: text("content_type").default("text/csv"),
+    userId: text("user_id")
+        .references(() => user.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at")
+        .$defaultFn(() => new Date())
+        .notNull(),
+    updatedAt: timestamp("updated_at")
+        .$defaultFn(() => new Date())
+        .notNull(),
+});
+
 export const schema = {
     user,
     session,
