@@ -1,4 +1,4 @@
-
+// app/api/csv-data/[id]/route.ts
 import { NextResponse } from "next/server";
 import { db } from "@/db/drizzle";
 import { csvFile } from "@/db/schema";
@@ -6,14 +6,17 @@ import { eq } from "drizzle-orm";
 
 export async function GET(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Await params first (Next.js 15 requirement)
+    const { id } = await params;
+    
     // Get file metadata from database
     const [fileData] = await db
       .select()
       .from(csvFile)
-      .where(eq(csvFile.id, params.id))
+      .where(eq(csvFile.id, id))
       .limit(1);
 
     if (!fileData) {
