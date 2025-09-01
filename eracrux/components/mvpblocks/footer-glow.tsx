@@ -49,35 +49,35 @@ export default function FooterGlow() {
           </p>
           <div className="mt-2 flex gap-3 text-sky-800">
             <a
-              href="#"
+              href="https://x.com/era_crux"
               aria-label="Twitter"
               className="hover:text-foreground transition"
             >
               <BrandIconTwitter/>
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/reel/DMZcH1UTyDu/?igsh=NmpwZTZva2dhaDN2"
               aria-label="Instagram"
               className="hover:text-foreground transition"
             >
               <BrandIconInstagram />
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/company/eracrux"
               aria-label="LinkedIn"
               className="hover:text-foreground transition"
             >
               <BrandIconLinkedin />
             </a>
             <a
-              href="#"
+              href="mailto:eracruxofficial@gmail.com"
               aria-label="mail"
               className="hover:text-foreground transition"
             >
               <BrandIconMail />
             </a>
             <a
-              href="#"
+              href="https://github.com/EraCruxOfficial/EraCrux"
               aria-label="Github"
               className="hover:text-foreground transition"
             >
