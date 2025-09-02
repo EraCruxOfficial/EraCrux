@@ -1,5 +1,10 @@
 "use client"
 
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { createAuthClient } from "better-auth/client"
+import { toast } from "sonner"
+const authClient = createAuthClient()
 import {
   IconCreditCard,
   IconDotsVertical,
@@ -28,7 +33,6 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-
 export function NavUser({
   user,
 }: {
@@ -39,7 +43,27 @@ export function NavUser({
   }
 }) {
   const { isMobile } = useSidebar()
-  
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
+
+  async function handleLogout() {
+    setIsLoading(true)
+    try {
+      const result = await authClient.signOut()
+      if ('error' in result && result.error) {
+        toast.error(result.error.message || "An unknown error occurred.")
+      } else {
+        toast.success("Logged out successfully!")
+        router.push("/login")
+      }
+    } catch (error) {
+      const e = error as Error
+      toast.error(e.message || "An unknown error occurred.")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
 
   return (
     <SidebarMenu>
@@ -52,9 +76,9 @@ export function NavUser({
             >
               <Avatar className="h-8 w-8 rounded-lg grayscale">
                 <AvatarImage src={user.image} alt={user.name} />
-                 <AvatarFallback className="rounded-lg">
-                    {user.name?.charAt(0).toUpperCase()}
-                    </AvatarFallback>
+                <AvatarFallback className="rounded-lg">
+                  {user.name?.charAt(0).toUpperCase()}
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">{user.name}</span>
@@ -75,9 +99,9 @@ export function NavUser({
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={user.image} alt={user.name} />
-                    <AvatarFallback className="rounded-lg">
+                  <AvatarFallback className="rounded-lg">
                     {user.name?.charAt(0).toUpperCase()}
-                    </AvatarFallback>
+                  </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">{user.name}</span>
@@ -103,9 +127,9 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout} >
               <IconLogout />
-              Log out
+              Logout
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
