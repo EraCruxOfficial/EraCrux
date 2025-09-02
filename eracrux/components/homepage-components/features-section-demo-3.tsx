@@ -5,6 +5,7 @@ import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import { IconBrandInstagramFilled } from "@tabler/icons-react";
+import { ChartLineLabel } from "./chart-line-label";
 
 
 export default function FeaturesSectionDemo() {
@@ -33,9 +34,9 @@ export default function FeaturesSectionDemo() {
         "col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800 border-b",
     },
     {
-      title: "Your Data is Secure",
+      title: "Large Data, Instant Dashboards",
       description:
-        "We prioritize your data security with end-to-end encryption and robust access controls, ensuring your information is always safe.",
+        "Handle large datasets with ease and create instant dashboards that provide real-time insights.",
       skeleton: <SkeletonFour />,
       className: "col-span-1 lg:col-span-3 border-b lg:border-none",
     },
@@ -247,8 +248,10 @@ export const SkeletonTwo = () => {
 
 export const SkeletonFour = () => {
   return (
-    <div className="h-60 md:h-60  flex flex-col items-center relative bg-transparent dark:bg-transparent mt-10">
-      <Globe className="absolute -right-10 md:-right-10 -bottom-80 md:-bottom-72" />
+    // h-60 md:h-60  flex flex-col items-center relative bg-transparent dark:bg-transparent mt-10
+    <div className="">
+      {/* <Globe className="absolute -right-10 md:-right-10 -bottom-80 md:-bottom-72" /> */}
+      <ChartLineLabel/>
     </div>
   );
 };
