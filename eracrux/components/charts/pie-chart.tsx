@@ -155,7 +155,7 @@ export default function UniversalPieChart({
       const processedRow: any = {}
 
       // Process label
-      let labelValue = row[detectedLabelKey]
+      const labelValue = row[detectedLabelKey]
       processedRow.label = String(labelValue || `Item ${index + 1}`)
       processedRow[detectedLabelKey] = processedRow.label
 

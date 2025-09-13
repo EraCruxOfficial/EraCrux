@@ -148,14 +148,14 @@ export default function UniversalBarChart({
             const processedRow: any = {};
 
             // Process X-axis value
-            let xValue = row[detectedXAxis];
+            const xValue = row[detectedXAxis];
             processedRow[detectedXAxis] = String(xValue || `Item ${index + 1}`);
 
             // Process numeric columns
             columns.forEach(key => {
                 if (key === detectedXAxis) return;
 
-                let value = row[key];
+                const value = row[key];
                 const colInfo = colAnalysis.find(col => col.name === key);
 
                 if (finalNumericKeys.includes(key)) {

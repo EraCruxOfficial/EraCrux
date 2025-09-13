@@ -181,14 +181,14 @@ export default function UniversalAreaChart({
       const processedRow: any = {};
 
       // Process X-axis value
-      let xValue = row[detectedXAxis];
+      const xValue = row[detectedXAxis];
       processedRow[detectedXAxis] = String(xValue || `Item ${index + 1}`);
 
       // Process all columns
       columns.forEach(key => {
         if (key === detectedXAxis) return; // Already processed
 
-        let value = row[key];
+        const value = row[key];
         const colInfo = colAnalysis.find(col => col.name === key);
 
         if (finalNumericKeys.includes(key)) {
