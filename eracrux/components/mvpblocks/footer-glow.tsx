@@ -92,22 +92,22 @@ export default function FooterGlow() {
             </div>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-foreground/70">
+                <a href="#features" className="text-foreground/70">
                   Features
                 </a>
               </li>
               <li>
-                <a href="#" className="text-foreground/70">
+                <a href="/pricing" className="text-foreground/70">
                   Pricing
                 </a>
               </li>
               <li>
-                <a href="#" className="text-foreground/70">
+                <a href="/login" className="text-foreground/70">
                   Integrations
                 </a>
               </li>
               <li>
-                <a href="#" className="text-foreground/70">
+                <a href="https://github.com/EraCruxOfficial/EraCrux" className="text-foreground/70">
                   Updates
                 </a>
               </li>

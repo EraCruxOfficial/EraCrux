@@ -37,14 +37,15 @@ export default function Globe3D() {
             YOUR ONE STOP DATA ANLYTICS PLATFORM
           </span>
           <h1 className="mx-auto mb-6 max-w-4xl text-4xl font-light md:text-5xl lg:text-7xl">
-            Data That <span className='font-bold'>Decides</span>. {' '}
+            Turn raw <span className='font-bold'>data</span>{' '}into {' '}
             <br />
-            <span className="bg-gradient-to-r from-purple-200 via-purple-600 to-purple-200 bg-clip-text font-bold text-transparent">Visualize </span> Signals. <br />
-            <span className='font-bold'>Amplify</span> Outcomes.
+            <span className="bg-gradient-to-r from-purple-200 via-purple-600 to-purple-200 bg-clip-text font-bold text-transparent">Dashboards </span> in seconds. <br />
+            {/* <span className='font-bold'>Amplify</span> Outcomes. */}
           </h1>
-          {/* <p className="mx-auto mb-10 max-w-2xl text-lg text-white/60 md:text-xl" style={{fontFamily: 'Inter, sans-serif'}}>
-           Clean, organize, and visualize your data effortlessly with our intuitive platform — featuring interactive dashboards, bar charts, pie charts, and more to turn raw data into clear insights.
-          </p> */}
+          <p className="mx-auto mb-10 max-w-2xl text-lg text-white/60 md:text-xl" style={{ fontFamily: 'Inter, sans-serif' }}>
+            Turn raw data into beautiful, interactive dashboards in seconds. <br/>
+            Upload your datasets and bring insights to life with powerful visualizations.
+          </p>
 
           <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:mb-0 sm:flex-row">
             <Link
