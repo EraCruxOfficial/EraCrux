@@ -51,7 +51,7 @@ const Blog8 = ({
   ],
 }: Blog8Props) => {
   return (
-    <section className="relative z-20 max-w-7xl pb-10 lg:pb-40 mx-auto px-4 sm:px-6 lg:px-8" style={{fontFamily:'Poppins, sans-serif'}}>
+    <section className="relative z-20 max-w-7xl pb-10 lg:pb-40 mx-auto px-4 sm:px-6 lg:px-8" style={{fontFamily:'Poppins, sans-serif'}} id="blogs">
       <div className="container flex flex-col items-center gap-16">
         <div className="text-center">
           <h2 className="mx-auto mb-6 text-3xl font-semibold text-pretty md:text-4xl lg:max-w-3xl">

@@ -15,8 +15,8 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { name: 'Home', href: '/' },
-  { name: 'Features', href: '/features' },
+  { name: 'Home', href: '#home' },
+  { name: 'Features', href: '#features' },
   {
     name: 'Products',
     href: '/products',
@@ -24,19 +24,19 @@ const navItems: NavItem[] = [
     dropdownItems: [
       {
         name: 'Analytics',
-        href: '/analytics',
+        href: '/login',
         description: 'Track your metrics',
       },
       {
         name: 'Dashboard',
-        href: '/dashboard',
+        href: '/login',
         description: 'Manage your data',
       },
-      { name: 'Reports', href: '/reports', description: 'Generate insights' },
+      { name: 'Reports', href: '/login', description: 'Generate insights' },
     ],
   },
   { name: 'Pricing', href: '/pricing' },
-  { name: 'About', href: '/about' },
+  { name: 'Blogs', href: '#blogs' },
 ];
 
 export default function Header1() {
