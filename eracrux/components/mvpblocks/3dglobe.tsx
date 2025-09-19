@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Pill, PillIndicator } from "@/components/ui/kibo-ui/pill";
 
 export default function Globe3D() {
   return (
@@ -33,9 +34,13 @@ export default function Globe3D() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <span className="mt-10 mb-6 inline-block rounded-full border border-[#9b87f5]/30 px-3 py-1 text-xs text-[#9b87f5]">
+          <Pill className='mt-10 mb-6 bg-[#9b87f5]/10 text-sm text-[#9b87f5]'>
+            <PillIndicator pulse variant="success" />
             YOUR ONE STOP DATA ANLYTICS PLATFORM
-          </span>
+          </Pill>
+          {/* <span className="mt-10 mb-6 inline-block rounded-full border border-[#9b87f5]/30 px-3 py-1 text-xs text-[#9b87f5]">
+            YOUR ONE STOP DATA ANLYTICS PLATFORM
+          </span> */}
           <h1 className="mx-auto mb-6 max-w-4xl text-4xl font-light md:text-5xl lg:text-7xl">
             Turn raw <span className='font-bold'>data</span>{' '}into {' '}
             <br />
@@ -43,7 +48,7 @@ export default function Globe3D() {
             {/* <span className='font-bold'>Amplify</span> Outcomes. */}
           </h1>
           <p className="mx-auto mb-10 max-w-2xl text-lg text-white/60 md:text-xl" style={{ fontFamily: 'Inter, sans-serif' }}>
-            Turn raw data into beautiful, interactive dashboards in seconds. <br/>
+            Turn raw data into beautiful, interactive dashboards in seconds. <br />
             Upload your datasets and bring insights to life with powerful visualizations.
           </p>
 
