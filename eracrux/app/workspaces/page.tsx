@@ -6,7 +6,7 @@ import { redirect } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { Plus, FileText, LayoutDashboard, MessageSquare } from "lucide-react"
+import { Plus, FileText, LayoutDashboard, MessageSquare, Database, FileChartLine } from "lucide-react"
 import { Logout } from "@/components/dashboard-components/logout"
 
 export default async function DashboardPage() {
@@ -73,14 +73,26 @@ export default async function DashboardPage() {
 
           {/* Dashboards */}
           <Card>
-            <CardHeader>
-              <CardTitle>Dashboards</CardTitle>
+            <CardHeader className="flex flex-row items-center gap-3">
+              <FileChartLine className="h-6 w-6 text-primary" />
+              <div>
+                <CardTitle>Website Analytics</CardTitle>
+               
+              </div>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-sm sm:text-base">
-                <li className="hover:underline cursor-pointer">Untitled Dashboard</li>
-                <li className="hover:underline cursor-pointer">New Dashboard</li>
-              </ul>
+              
+              <div className="flex flex-col gap-2">
+                 <p className="text-l text-muted-foreground">
+                  1000 Page Views, 200 Bounce Rate, 50 Avg. Session Duration
+                </p>
+                <div className="text-sm">
+                  <span className="font-medium">Rows:</span> 12,340
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Uploaded: 2024-06-10
+                </div>
+              </div>
             </CardContent>
           </Card>
 

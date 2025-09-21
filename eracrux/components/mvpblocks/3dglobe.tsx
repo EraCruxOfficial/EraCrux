@@ -34,7 +34,7 @@ export default function Globe3D() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <Pill className='mt-10 mb-6 bg-[#9b87f5]/10 text-sm text-[#9b87f5]'>
+          <Pill className='mt-10 mb-6 bg-[#9b87f5]/10 text-sm]'>
             <PillIndicator pulse variant="success" />
             YOUR ONE STOP DATA ANLYTICS PLATFORM
           </Pill>
