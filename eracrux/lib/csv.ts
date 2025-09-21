@@ -1,18 +1,21 @@
 import Papa from "papaparse";
 
+// Define a row type for parsed CSV data
+type CSVRow = Record<string, string | null | undefined>;
+
 function looksNumeric(value: string): boolean {
   const cleaned = value.replace(/[^0-9.-]/g, ""); // keep digits, dot, minus
   return cleaned !== "" && !isNaN(Number(cleaned));
 }
 
 export function parseAndCleanCSV(csv: string) {
-  const parsed = Papa.parse(csv, {
+  const parsed = Papa.parse<CSVRow>(csv, {
     header: true,
     skipEmptyLines: true,
     dynamicTyping: false,
   });
 
-  const rows: any[] = parsed.data;
+  const rows: CSVRow[] = parsed.data;
   const headers = parsed.meta.fields || [];
 
   // Step 1: detect which columns are numeric
@@ -37,7 +40,7 @@ export function parseAndCleanCSV(csv: string) {
 
   // Step 2: clean data
   const cleanedData = rows.map(row => {
-    const cleaned: any = {};
+    const cleaned: Record<string, string | number | null> = {};
 
     headers.forEach(header => {
       const safeHeader = header
@@ -49,9 +52,10 @@ export function parseAndCleanCSV(csv: string) {
 
       if (numericColumns.has(header)) {
         const numericPart = rawValue.replace(/[^0-9.-]/g, "");
-        cleaned[safeHeader] = numericPart && !isNaN(Number(numericPart))
-          ? parseFloat(numericPart)
-          : null;
+        cleaned[safeHeader] =
+          numericPart && !isNaN(Number(numericPart))
+            ? parseFloat(numericPart)
+            : null;
       } else {
         cleaned[safeHeader] = rawValue;
       }
