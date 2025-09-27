@@ -36,7 +36,7 @@ export default function Globe3D() {
         >
           <Pill className='mt-10 mb-6 bg-[#9b87f5]/10 text-sm]'>
             <PillIndicator pulse variant="success" />
-            YOUR ONE STOP DATA ANLYTICS PLATFORM
+            YOUR ONE STOP DATA ANALYTICS PLATFORM
           </Pill>
           {/* <span className="mt-10 mb-6 inline-block rounded-full border border-[#9b87f5]/30 px-3 py-1 text-xs text-[#9b87f5]">
             YOUR ONE STOP DATA ANLYTICS PLATFORM
