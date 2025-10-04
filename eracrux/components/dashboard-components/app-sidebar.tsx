@@ -44,7 +44,7 @@ const items = [
     },
     {
         title: "CruxAI (coming soon)",
-        url: "#",
+        url: "/workspaces/cruxai",
         icon: IconSparkles,
     },
     {
