@@ -5,6 +5,7 @@ import { parseAndCleanCSV } from "@/lib/csv";
 import UniversalAreaChart from "@/components/charts/area-chart";
 import ChartBarMultiple from "@/components/charts/bar-chart";
 import CustomPieChart from "@/components/charts/pie-chart";
+import { EmptyInputGroup } from "@/components/ui/empty-page";
 // import MapView from "@/components/MapView";
 
 interface FileMetadata {
@@ -31,32 +32,32 @@ export default function Dashboard({ id }: { id: string }) {
       try {
         setLoading(true);
         setError(null);
-        
+
         // Fetch CSV data from our API route
         const res = await fetch(`/api/fetchCsv/${id}`);
-        
+
         if (!res.ok) {
           const errorData = await res.json();
           throw new Error(errorData.error || 'Failed to fetch data');
         }
-        
+
         const result = await res.json();
-        
+
         if (!result.success) {
           throw new Error('API returned unsuccessful response');
         }
-        
+
         const fileData = result.data;
         setFileInfo(fileData);
-        
+
         // Parse the CSV content
         const parsed = parseAndCleanCSV(fileData.csvContent);
         console.log("File ID:", id);
         console.log("File Info:", fileData);
         console.log("Parsed Data:", parsed);
-        
+
         setData(parsed);
-        
+
       } catch (err) {
         console.error('Error fetching data:', err);
         setError(err instanceof Error ? err.message : 'Unknown error occurred');
@@ -64,7 +65,7 @@ export default function Dashboard({ id }: { id: string }) {
         setLoading(false);
       }
     }
-    
+
     if (id) {
       fetchData();
     }
@@ -83,12 +84,10 @@ export default function Dashboard({ id }: { id: string }) {
 
   if (error) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-center text-red-600">
-          <p className="text-lg font-semibold">Error Loading Data</p>
-          <p className="text-sm">{error}</p>
-        </div>
+      <div className="flex items-center justify-center min-h-screen w-full">
+        <EmptyInputGroup />
       </div>
+
     );
   }
 
@@ -118,13 +117,13 @@ export default function Dashboard({ id }: { id: string }) {
       <div className="space-y-4">
         {/* Area chart spanning full width */}
         <div className="w-full">
-          <UniversalAreaChart 
-            data={data} 
-            title="📊 Area Performance Analytics" 
-            height={400} 
+          <UniversalAreaChart
+            data={data}
+            title="📊 Area Performance Analytics"
+            height={400}
           />
         </div>
-        
+
         {/* Bar charts in a row below */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <ChartBarMultiple data={data} />
