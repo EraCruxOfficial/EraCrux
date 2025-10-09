@@ -13,7 +13,7 @@ export const auth = betterAuth({
     enabled: true,
     sendResetPassword: async ({ user, url }) => {
       resend.emails.send({
-        from: "noreply@meetmates.space",
+        from: "noreply@eracrux.com",
         to: user.email,
         subject: "Reset your password",
         react: ForgotPasswordEmail({
