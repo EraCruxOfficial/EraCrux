@@ -40,7 +40,7 @@ export async function GET(
 
     // ✅ Generate short-lived signed URL
     const command = new GetObjectCommand({
-      Bucket: process.env.AWS_BUCKET_NAME!,
+      Bucket: process.env.S3_BUCKET_NAME!,
       Key: fileData.s3Key,
     });
     const signedUrl = await getSignedUrl(s3, command, { expiresIn: 60 });
@@ -71,10 +71,13 @@ export async function GET(
         },
       },
     });
-  } catch (error) {
-    console.error("Error fetching CSV data:", error);
+  } catch (error: any) {
+    console.error("🧨 Error fetching CSV data:");
+    console.error("Message:", error?.message);
+    console.error("Stack:", error?.stack);
+    console.error("Full error object:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: error?.message || "Internal server error" },
       { status: 500 }
     );
   }
