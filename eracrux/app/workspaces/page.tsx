@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { FileChartLine, Plus } from "lucide-react"
 import { FileCard } from "@/components/dashboard-components/file-card"
+import Link from "next/link"
 
 export default async function DashboardPage() {
   const session = await auth.api.getSession({
@@ -52,9 +53,12 @@ export default async function DashboardPage() {
           {files.length === 0 ? (
             <div className="text-center text-muted-foreground py-16">
               <p>No files uploaded yet</p>
+              <Link href="/workspaces/integration" passHref>
+              
               <Button variant="outline" className="mt-4">
                 <Plus className="mr-2 h-4 w-4" /> Upload a new CSV
               </Button>
+              </Link>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

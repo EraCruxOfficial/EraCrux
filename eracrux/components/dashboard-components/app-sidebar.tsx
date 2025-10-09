@@ -43,7 +43,7 @@ const items = [
         icon: IconGitBranch,
     },
     {
-        title: "CruxAI (coming soon)",
+        title: "CruxAI",
         url: "/workspaces/cruxai",
         icon: IconSparkles,
     },
