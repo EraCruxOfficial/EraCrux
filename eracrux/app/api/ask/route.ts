@@ -3,7 +3,6 @@ import Groq from "groq-sdk";
 import csv from "csvtojson";
 import fs from "fs/promises";
 import path from "path";
-
 export const runtime = "nodejs";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY as string });

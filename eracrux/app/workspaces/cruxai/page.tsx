@@ -9,6 +9,15 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Loader2, Send, Upload } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+
 interface Message {
   role: "user" | "assistant";
   content: string;
@@ -81,8 +90,9 @@ export default function AIChatPage() {
 
 
       {/* Header */}
-      <div className="border-b p-4 text-center font-semibold text-lg text-foreground shadow-sm">
-        CruxAI (Beta)
+      <div className="border-b p-4 text-center font-semibold text-lg text-foreground shadow-sm flex items-center justify-center gap-2">
+        <img src="/icon.png" alt="" className="h-8 w-8 rounded-full" /> CruxAI (Beta)
+        <p className="text-xs">We are in beta testing right now, CruxAI can make mistakes.</p>
       </div>
 
       {/* Chat Area */}
@@ -137,14 +147,13 @@ export default function AIChatPage() {
         className="p-4 border-t bg-background flex flex-col gap-3"
       >
         <div className="flex items-center gap-3">
+          {/* Upload Button */}
           <label
             htmlFor="file"
             className="flex items-center gap-2 border rounded-md px-3 py-2 cursor-pointer hover:bg-muted transition"
           >
             <Upload className="h-4 w-4" />
-            <span className="text-sm">
-              {file ? file.name : "Upload CSV"}
-            </span>
+            <span className="text-sm">{file ? file.name : "Upload CSV"}</span>
           </label>
           <Input
             id="file"
@@ -153,24 +162,49 @@ export default function AIChatPage() {
             onChange={handleFileChange}
             className="hidden"
           />
+
+          {/* Model Drawer */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="sm" className="text-xs font-medium">
+                Model: llama-3.1-8b-instant
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-64">
+              <SheetHeader>
+                <SheetTitle>Model Info</SheetTitle>
+                <SheetDescription>
+                  <div className="mt-2 space-y-3 text-sm">
+                    <p><strong>Model:</strong> llama-3.1-8b-instant</p>
+                    <p><strong>Provider:</strong> Groq / Meta Llama</p>
+                    <p><strong>Context Length:</strong> 8k tokens</p>
+                    <p><strong>Speed:</strong> Optimized for instant responses ⚡</p>
+                  </div>
+                </SheetDescription>
+              </SheetHeader>
+            </SheetContent>
+          </Sheet>
         </div>
+
 
         <div className="flex items-end gap-3">
           <Textarea
             value={question}
-            onChange={(e) => setQuestion(e.target.value)}
+            onChange={(e) => {
+              setQuestion(e.target.value);
+              const target = e.target;
+              target.style.height = "auto";
+              target.style.height = `${Math.min(target.scrollHeight, 200)}px`;
+            }}
             placeholder="Ask about your CSV..."
-            className="flex-1 min-h-[60px] resize-none"
+            className="flex-1 resize-none overflow-y-auto min-h-[60px] max-h-[200px] transition-[height] duration-200 ease-in-out"
           />
           <Button type="submit" disabled={loading}>
-            {loading ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : (
-              <Send className="h-4 w-4" />
-            )}
+            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
           </Button>
         </div>
       </form>
+
     </div>
   );
 }

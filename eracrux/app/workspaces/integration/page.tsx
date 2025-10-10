@@ -1,9 +1,17 @@
 "use client";
 
-import { Dropzone, DropzoneContent, DropzoneEmptyState } from '@/components/ui/kibo-ui/dropzone';
-import { UploadIcon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { Dropzone, DropzoneContent, DropzoneEmptyState } from "@/components/ui/kibo-ui/dropzone";
+import {
+  UploadIcon,
+  DatabaseIcon,
+  FileSpreadsheetIcon,
+  FileInputIcon,
+  FacebookIcon,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function IntegrationPage() {
   const [files, setFiles] = useState<File[] | undefined>();
@@ -38,26 +46,106 @@ export default function IntegrationPage() {
     }
   };
 
+  const handleIntegration = (service: string) => {
+    setUploadStatus(`🔗 Connecting to ${service}...`);
+    setTimeout(() => {
+      router.push(`/workspaces/integrations/${service.toLowerCase().replace(" ", "-")}`);
+    }, 1000);
+  };
+
   return (
-    <div className='flex w-full flex-col items-center justify-center gap-4 p-4'>
-      <Dropzone onDrop={handleDrop} onError={console.error} src={files}>
-        <DropzoneEmptyState>
-          <div className="flex w-full items-center gap-4 p-8">
-            <div className="flex size-16 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-              <UploadIcon size={24} />
-            </div>
-            <div className="text-left">
-              <p className="font-medium text-sm">Upload a CSV file</p>
-              <p className="text-muted-foreground text-xs">
-                Drag and drop or click to upload
-              </p>
-            </div>
-          </div>
-        </DropzoneEmptyState>
-        <DropzoneContent />
-      </Dropzone>
+    <div className="flex flex-col items-center justify-center w-full gap-6 p-6">
+      <h1 className="text-2xl font-semibold text-center">Connect Your Data Source</h1>
+      <p className="text-sm text-muted-foreground text-center max-w-md">
+        Upload your data or connect directly to popular platforms.
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl mt-6">
+        {/* CSV Upload Card — spans full width (3 columns) */}
+        <Card className="md:col-span-3 border-dashed border-2 hover:shadow-lg transition">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <UploadIcon className="w-5 h-5 text-primary" /> CSV Upload
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Dropzone onDrop={handleDrop} onError={console.error} src={files}>
+              <DropzoneEmptyState>
+                <div className="flex flex-col items-center justify-center gap-3 p-6 md:p-10 text-center  border-muted rounded-lg">
+                  <div className="flex items-center justify-center size-16 rounded-lg bg-muted text-muted-foreground">
+                    <UploadIcon size={24} />
+                  </div>
+                  <p className="font-medium text-sm">Upload a CSV file</p>
+                  <p className="text-muted-foreground text-xs">
+                    Drag and drop or click to upload
+                  </p>
+                </div>
+              </DropzoneEmptyState>
+              <DropzoneContent />
+            </Dropzone>
+          </CardContent>
+        </Card>
+
+        {/* Other Integrations Below */}
+        <Card className="hover:shadow-md transition">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FileSpreadsheetIcon className="w-5 h-5 text-green-500" /> Google Sheets
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex justify-center">
+            <Button onClick={() => handleIntegration("Google Sheets")}>Connect</Button>
+          </CardContent>
+        </Card>
+
+        <Card className="hover:shadow-md transition">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FileInputIcon className="w-5 h-5 text-green-700" /> Microsoft Excel
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex justify-center">
+            <Button onClick={() => handleIntegration("Microsoft Excel")}>Connect</Button>
+          </CardContent>
+        </Card>
+
+        <Card className="hover:shadow-md transition">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <DatabaseIcon className="w-5 h-5 text-blue-600" /> MySQL
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex justify-center">
+            <Button onClick={() => handleIntegration("MySQL")}>Connect</Button>
+          </CardContent>
+        </Card>
+
+        <Card className="hover:shadow-md transition">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FacebookIcon className="w-5 h-5 text-blue-500" /> Facebook Marketplace
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex justify-center">
+            <Button onClick={() => handleIntegration("Facebook Marketplace")}>Connect</Button>
+          </CardContent>
+        </Card>
+
+        <Card className="hover:shadow-md transition">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <DatabaseIcon className="w-5 h-5 text-gray-500" /> Other Integrations
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col items-center justify-center text-muted-foreground">
+            <p className="text-xs mb-2">Coming soon...</p>
+            <Button variant="outline" size="sm">Request Integration</Button>
+          </CardContent>
+        </Card>
+      </div>
+
       {uploadStatus && (
-        <p className="text-sm text-muted-foreground">{uploadStatus}</p>
+        <p className="text-sm text-muted-foreground mt-4">{uploadStatus}</p>
       )}
     </div>
   );

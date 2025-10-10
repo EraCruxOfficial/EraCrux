@@ -11,9 +11,9 @@ export default async function Layout({ children }: { children: React.ReactNode }
 
   return (
     <SidebarProvider style={{ fontFamily: "Inter, sans-serif" }}>
-      <div className="flex h-screen w-screen overflow-hidden">
+      <div className="flex h-screen w-screen overflow-y-hidden">
         <AppSidebar user={session.user} />
-        <main className="flex flex-col flex-1 h-full overflow-hidden">
+        <main className="flex flex-col flex-1 h-full overflow-y-hidden">
           {/* Header */}
           <div className="flex items-center justify-between p-0.5 border-b bg-background shadow-sm">
             <SidebarTrigger />
@@ -21,7 +21,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
           </div>
 
           {/* Main Content */}
-          <div className="flex-1 overflow-hidden">
+          <div className="flex-1 overflow-x-hidden">
             {children}
           </div>
         </main>
