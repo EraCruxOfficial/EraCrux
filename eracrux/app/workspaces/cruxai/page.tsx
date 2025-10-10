@@ -77,11 +77,13 @@ export default function AIChatPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-background w-screen max-w-3xl mx-auto border rounded-lg shadow-lg">
+    <div className="flex flex-col h-full flex-1 bg-background border-l rounded-lg shadow-lg overflow-hidden">
+
+
       {/* Header */}
-      {/* <div className="border-b p-4 text-center font-semibold text-lg text-foreground shadow-sm">
-        CruxAI
-      </div> */}
+      <div className="border-b p-4 text-center font-semibold text-lg text-foreground shadow-sm">
+        CruxAI (Beta)
+      </div>
 
       {/* Chat Area */}
       <ScrollArea className="flex-1 p-6 overflow-y-auto">

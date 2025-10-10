@@ -3,6 +3,7 @@ import { Home } from "lucide-react"
 import { NavUser } from "./nav-user"
 import { usePathname } from "next/navigation"
 
+
 import {
     IconGitBranch,
     IconFolder,
@@ -86,7 +87,7 @@ export function AppSidebar({ user }: AppSidebarProps) {
         <Sidebar>
             <SidebarHeader>
                 <SidebarMenu>
-                    <SidebarMenuItem>
+                    <SidebarMenuItem className="flex items-center gap-2">
                         <SidebarMenuButton
                             asChild
                             className="data-[slot=sidebar-menu-button]:!p-1.5"
