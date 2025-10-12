@@ -100,7 +100,7 @@ export default function Header1() {
             transition={{ type: 'spring', stiffness: 400, damping: 10 }}
           >
             <Link href="/" className="flex items-center space-x-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-800 to-blue-900">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[radial-gradient(circle_at_50%_50%,_#271465,_#a066ce)]">
                 <img src="/eracrux-white-trans.png" alt="EraCrux Logo" className="h-full w-full" />
                 </div>
               <span className="bg-gradient-to-r from-gray-100 via-gray-400 to-gray-200 bg-clip-text text-xl font-bold text-transparent">

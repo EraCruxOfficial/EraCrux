@@ -37,9 +37,9 @@ export default function FooterGlow() {
       <div className="glass relative mx-auto flex max-w-screen flex-col items-center gap-8 rounded-2xl px-6 py-10 md:flex-row md:items-start md:justify-between md:gap-12">
         <div className="flex flex-col items-center md:items-start">
           <a href="#" className="mb-4 flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-rose-400 to-rose-700 text-2xl font-extrabold text-white shadow-md">
-              <img src="/icon.png" alt="" className="rounded-lg" />
-            </span>
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[radial-gradient(circle_at_50%_50%,_#271465,_#a066ce)]">
+                <img src="/eracrux-white-trans.png" alt="EraCrux Logo" className="h-full w-full" />
+                </div>
             <span className="bg-gradient-to-r from-gray-100 via-gray-400 to-gray-200 bg-clip-text text-xl font-bold text-transparent">
               EraCrux
             </span>
