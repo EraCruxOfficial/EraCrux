@@ -35,9 +35,9 @@ export default function Globe3D() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <Pill className="mt-10 mb-6 bg-[#9b87f5]/10 text-sm">
+          <Pill className="mt-10 mb-6 bg-[#9b87f5]/10 text-xs md:text-sm ">
             <PillIndicator pulse variant="success" />
-            <span className="font-bold">CruxAI is LIVE!</span> Chat with your data in the fastest way.
+            <span className="font-bold">CruxAI is LIVE!</span> <p>Fastest AI Data Analyst.</p>
           </Pill>
 
           {/* <span className="mt-10 mb-6 inline-block rounded-full border border-[#9b87f5]/30 px-3 py-1 text-xs text-[#9b87f5]">
