@@ -4,7 +4,7 @@ import { redirect } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { FileChartLine, Plus } from "lucide-react"
+import { FileChartLine, Plus, MessageSquare } from "lucide-react"
 import { FileCard } from "@/components/dashboard-components/file-card"
 import Link from "next/link"
 
@@ -42,22 +42,34 @@ export default async function DashboardPage() {
           <p className="text-sm sm:text-base text-muted-foreground">
             Welcome back to {session.user.name}&apos;s Workspace
           </p>
+          <div className="mt-2 flex gap-3 md:flex-row flex-col">
+            <Link href="/workspaces/integration" passHref>
+              <Button variant="outline" className="mt-4">
+                <Plus className="mr-1 h-4 w-4" /> Upload a new CSV
+              </Button>
+            </Link>
+            <Link href="/workspaces/cruxai" passHref>
+              <Button variant="default" className="mt-4">
+                <MessageSquare className="mr-1 h-4 w-4" /> Chat with your data
+              </Button>
+            </Link>
+          </div>
         </div>
 
         <Separator />
 
         {/* Uploaded Files */}
         <div>
-          <h2 className="text-xl font-semibold mb-4">Your Uploaded CSV Files</h2>
+          <h2 className="text-xl font-semibold mb-4">Your Dashboards</h2>
 
           {files.length === 0 ? (
             <div className="text-center text-muted-foreground py-16">
               <p>No files uploaded yet</p>
               <Link href="/workspaces/integration" passHref>
-              
-              <Button variant="outline" className="mt-4">
-                <Plus className="mr-2 h-4 w-4" /> Upload a new CSV
-              </Button>
+
+                <Button variant="outline" className="mt-4">
+                  <Plus className="mr-2 h-4 w-4" /> Upload a new CSV
+                </Button>
               </Link>
             </div>
           ) : (

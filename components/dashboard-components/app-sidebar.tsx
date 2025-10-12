@@ -103,7 +103,7 @@ export function AppSidebar({ user }: AppSidebarProps) {
 
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarMenu>
+                    {/* <SidebarMenu>
                         <SidebarMenuItem className="flex items-center gap-2">
                             <SidebarMenuButton
                                 tooltip="Quick Create"
@@ -113,7 +113,7 @@ export function AppSidebar({ user }: AppSidebarProps) {
                                 <a href="/workspaces/upload"><span>Quick Create</span></a>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
-                    </SidebarMenu>
+                    </SidebarMenu> */}
 
                     <SidebarGroupLabel>Application</SidebarGroupLabel>
                     <SidebarGroupContent>
