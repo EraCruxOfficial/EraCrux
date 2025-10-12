@@ -87,49 +87,40 @@ export default function IntegrationPage() {
         </Card>
 
         {/* Other Integrations Below */}
-        <Card className="hover:shadow-md transition">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <FileSpreadsheetIcon className="w-5 h-5 text-green-500" /> Google Sheets
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="flex justify-center">
-            <Button onClick={() => handleIntegration("Google Sheets")}>Connect</Button>
-          </CardContent>
-        </Card>
-
-        <Card className="hover:shadow-md transition">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <FileInputIcon className="w-5 h-5 text-green-700" /> Microsoft Excel
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="flex justify-center">
-            <Button onClick={() => handleIntegration("Microsoft Excel")}>Connect</Button>
-          </CardContent>
-        </Card>
-
-        <Card className="hover:shadow-md transition">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <DatabaseIcon className="w-5 h-5 text-blue-600" /> MySQL
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="flex justify-center">
-            <Button onClick={() => handleIntegration("MySQL")}>Connect</Button>
-          </CardContent>
-        </Card>
-
-        <Card className="hover:shadow-md transition">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <FacebookIcon className="w-5 h-5 text-blue-500" /> Facebook Marketplace
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="flex justify-center">
-            <Button onClick={() => handleIntegration("Facebook Marketplace")}>Connect</Button>
-          </CardContent>
-        </Card>
+        {[
+          {
+            title: "Google Sheets",
+            icon: <FileSpreadsheetIcon className="w-5 h-5 text-green-500" />,
+            onClick: () => handleIntegration("Google Sheets"),
+          },
+          {
+            title: "Microsoft Excel",
+            icon: <FileInputIcon className="w-5 h-5 text-green-700" />,
+            onClick: () => handleIntegration("Microsoft Excel"),
+          },
+          {
+            title: "MySQL",
+            icon: <DatabaseIcon className="w-5 h-5 text-blue-600" />,
+            onClick: () => handleIntegration("MySQL"),
+          },
+          {
+            title: "Facebook Marketplace",
+            icon: <FacebookIcon className="w-5 h-5 text-blue-500" />,
+            onClick: () => handleIntegration("Facebook Marketplace"),
+          },
+        ].map(({ title, icon, onClick }) => (
+          <Card key={title} className="hover:shadow-md transition">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                {icon} {title}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col items-center justify-center text-muted-foreground">
+              <p className="text-xs mb-2">Coming soon...</p>
+              {/* <Button variant={"secondary"} onClick={()=>{}}>Request Integration</Button> */}
+            </CardContent>
+          </Card>
+        ))}
 
         <Card className="hover:shadow-md transition">
           <CardHeader>

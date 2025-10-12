@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EraCrux
 
-## Getting Started
+## Overview
 
-First, run the development server:
+EraCrux is a modern data analytics platform designed to help users clean, organize, and visualize their data with interactive dashboards and AI-powered insights. Upload CSVs, connect to popular data sources, and chat with your data using CruxAI.
 
-```bash
+## Features
+
+- **CSV Upload & Dashboard Generation:** Instantly upload CSV files and generate interactive dashboards.
+- **AI Chat with Data:** Use CruxAI to ask questions about your data and get instant answers.
+- **Integrations:** Connect with Google Sheets, Microsoft Excel, MySQL, and more (coming soon).
+- **Beautiful UI:** Responsive, modern interface with customizable charts and visualizations.
+- **User Authentication:** Secure login and signup with social providers (Google, GitHub).
+
+## Installation
+
+To install and run this project, follow these steps:
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/EraCruxOfficial/EraCrux.git
+    ```
+2. Navigate to the project directory:
+    ```sh
+    cd EraCrux
+    ```
+3. Install dependencies:
+    ```sh
+    npm install
+    ```
+
+## Usage
+
+To start the development server, run:
+```sh
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Folder Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `app/` — Next.js app routes and pages
+- `components/` — UI components and blocks
+- `db/` — Database configuration and schema
+- `lib/` — Utility libraries (auth, CSV parsing, etc.)
+- `server/` — Server-side logic and API handlers
+- `public/` — Static assets
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Integrations
 
-## Learn More
+- **CSV Upload:** Upload CSV files and view dashboards.
+- **CruxAI:** Chat with your data using AI ([app/workspaces/cruxai/page.tsx](app/workspaces/cruxai/page.tsx)).
+- **Other Integrations:** Google Sheets, Excel, MySQL, Facebook Marketplace (coming soon).
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+MIT
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For more details, see [app/page.tsx](app/page.tsx), [app/workspaces/page.tsx](app/workspaces/page.tsx),
