@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Pill, PillIndicator } from "@/components/ui/kibo-ui/pill";
+import { HeroVideoDialog } from '@/components/ui/hero-video-dialog';
 
 export default function Globe3D() {
   return (
@@ -94,12 +95,26 @@ export default function Globe3D() {
             />
           </div>
           <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-lg shadow-[0_0_50px_rgba(155,135,245,0.2)]">
-            <img
+            {/* <img
               src="/eraDashboard.png"
               alt="EraCrux Dashboard"
               width={1920}
               height={1080}
               className="h-auto w-full rounded-lg border border-white/10"
+            /> */}
+            <HeroVideoDialog
+              className="block dark:hidden"
+              animationStyle="from-center"
+              videoSrc="https://www.youtube.com/embed/h0qvG-6SKwI?si=cf80wjQ5_72v8U_W"
+              thumbnailSrc="/eraDashboard.png"
+              thumbnailAlt="Hero Video"
+            />
+            <HeroVideoDialog
+              className="hidden dark:block"
+              animationStyle="from-center"
+              videoSrc="https://www.youtube.com/embed/h0qvG-6SKwI?si=cf80wjQ5_72v8U_W"
+              thumbnailSrc="/eraDashboard.png"
+              thumbnailAlt="Hero Video"
             />
           </div>
         </motion.div>

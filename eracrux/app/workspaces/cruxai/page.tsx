@@ -78,7 +78,7 @@ export default function AIChatPage() {
       console.error(err);
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "⚠️ Failed to get a response from AI." },
+        { role: "assistant", content: "⚠️ Failed to get a response from AI, Please try to keep the file size under 1MB" },
       ]);
     } finally {
       setLoading(false);
@@ -90,9 +90,12 @@ export default function AIChatPage() {
 
 
       {/* Header */}
-      <div className="border-b p-4 text-center font-semibold text-lg text-foreground shadow-sm flex items-center justify-center gap-2">
-        <img src="/icon.png" alt="" className="h-8 w-8 rounded-full" /> CruxAI (Beta)
-        <p className="text-xs">We are in beta testing right now, CruxAI can make mistakes.</p>
+      <div className="border-b p-4 text-center font-semibold text-lg text-foreground shadow-sm flex items-center justify-center gap-1 flex-col">
+        <div className="flex gap-2">
+          <img src="/icon.png" alt="" className="h-7 w-7 rounded-full" />
+          <p>CruxAI (Beta)</p>
+        </div>
+        <p className="text-xs font-thin">We are in beta testing right now, CruxAI can make mistakes.</p>
       </div>
 
       {/* Chat Area */}
