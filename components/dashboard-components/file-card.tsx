@@ -19,8 +19,8 @@ export function FileCard({ id, filename, createdAt, fileSize }: FileCardProps) {
     <Card className="hover:shadow-lg transition-shadow">
       <CardHeader className="flex flex-row items-center gap-3">
         <FileChartLine className="h-6 w-6 text-primary" />
-        <div>
-          <CardTitle className="truncate">{filename}</CardTitle>
+        <div className="truncate">
+          <CardTitle>{filename}</CardTitle>
           <p className="text-xs text-muted-foreground">
             Uploaded: {new Date(createdAt).toLocaleDateString()}
           </p>
