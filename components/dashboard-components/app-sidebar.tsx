@@ -39,7 +39,7 @@ const items = [
         icon: Home,
     },
     {
-        title: "Integrations",
+        title: "CruxBoard",
         url: "/workspaces/integration",
         icon: IconGitBranch,
     },
