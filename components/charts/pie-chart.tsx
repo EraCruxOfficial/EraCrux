@@ -26,7 +26,6 @@ import {
 } from "@/components/ui/select"
 import { DownloadChartButton } from "@/components/charts/DownloadChartButton"
 import { Button } from "@/components/ui/button"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 
 // Enhanced color palette for pie chart segments
 const COLOR_PALETTE = [

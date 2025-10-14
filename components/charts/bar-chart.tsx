@@ -5,6 +5,7 @@ import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import { TrendingUp, TrendingDown } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ChevronDown } from "lucide-react";
+import { DownloadChartButton } from "@/components/charts/DownloadChartButton";
 
 import {
     Card,
@@ -245,11 +246,16 @@ export default function UniversalBarChart({
     const dynamicDescription = description ||
         `Showing ${numericKeys.length} metric${numericKeys.length !== 1 ? 's' : ''} across ${processedData.length} categories`;
 
+    const chartRef = React.useRef<HTMLDivElement>(null)
+
     return (
         <Card>
-            <CardHeader>
-                <CardTitle>{title}</CardTitle>
-                <CardDescription>{dynamicDescription}</CardDescription>
+            <CardHeader className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                <div>
+                    <CardTitle>{title}</CardTitle>
+                    <CardDescription>{dynamicDescription}</CardDescription>
+                </div>
+                <DownloadChartButton targetRef={chartRef} filename={title} />
             </CardHeader>
 
             {/* Axis Selection Controls */}
@@ -342,7 +348,7 @@ export default function UniversalBarChart({
             )}
 
             <CardContent>
-                <ChartContainer config={chartConfig} className={`w-full`} style={{ height: `${height}px` }}>
+                <ChartContainer config={chartConfig} className={`w-full`} style={{ height: `${height}px` }} ref={chartRef}>
                     <BarChart data={processedData} accessibilityLayer>
                         <CartesianGrid vertical={false} strokeDasharray="3 3" opacity={0.4} />
                         <XAxis

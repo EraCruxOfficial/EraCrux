@@ -4,6 +4,7 @@ import * as React from "react";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ChevronDown } from "lucide-react";
+import { DownloadChartButton } from "@/components/charts/DownloadChartButton"
 
 
 import {
@@ -108,7 +109,7 @@ export default function UniversalAreaChart({
     setSelectedXAxis("");
     setSelectedYKeys([]);
   };
-
+  const chartRef = React.useRef<HTMLDivElement>(null)
   // Auto-detect data structure and types
   const { processedData, xAxisKey, numericKeys, chartConfig, columnAnalysis } = React.useMemo(() => {
     if (!data || data.length === 0) {
@@ -254,11 +255,12 @@ export default function UniversalAreaChart({
 
   return (
     <Card className="pt-0 w-full max-w-7xl mx-auto">
-      <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
-        <div className="grid flex-1 gap-1">
+      <CardHeader className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 py-5">
+        <div>
           <CardTitle>{title}</CardTitle>
           <CardDescription>{dynamicDescription}</CardDescription>
         </div>
+        <DownloadChartButton targetRef={chartRef} filename={title} />
 
         {showTimeRange && timeRangeOptions.length > 1 && (
           <Select value={timeRange} onValueChange={setTimeRange}>
@@ -368,11 +370,12 @@ export default function UniversalAreaChart({
         </CardContent>
       )}
 
-      <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
+      <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6" >
         <ChartContainer
           config={chartConfig}
           className={`aspect-auto w-full`}
           style={{ height: `${height}px` }}
+          ref={chartRef}
         >
           <AreaChart data={filteredData}>
             <defs>
