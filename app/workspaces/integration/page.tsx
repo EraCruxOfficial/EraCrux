@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 export default function IntegrationPage() {
   const [files, setFiles] = useState<File[] | undefined>();
@@ -130,7 +131,9 @@ export default function IntegrationPage() {
           </CardHeader>
           <CardContent className="flex flex-col items-center justify-center text-muted-foreground">
             <p className="text-xs mb-2">Coming soon...</p>
+            <Link href="https://forms.gle/a6oih3a1p7LZp5w38" target="_blank" rel="noopener noreferrer">
             <Button variant="outline" size="sm">Request Integration</Button>
+            </Link>
           </CardContent>
         </Card>
       </div>

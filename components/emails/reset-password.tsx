@@ -93,10 +93,10 @@ const ForgotPasswordEmail = (props: ForgotPasswordEmailProps) => {
                 This email was sent to {userEmail}
               </Text>
               <Text className="text-[12px] text-gray-500 leading-[16px] m-0 mb-[8px]">
-                © 2025 Your Company Name. All rights reserved.
+                © 2025 EraCrux. All rights reserved.
               </Text>
               <Text className="text-[12px] text-gray-500 leading-[16px] m-0">
-                123 Business Street, New Delhi, India | 
+                Yamuna Vihar, New Delhi, India | 
                 <Link href="#" className="text-gray-500 underline ml-[4px]">
                   Unsubscribe
                 </Link>

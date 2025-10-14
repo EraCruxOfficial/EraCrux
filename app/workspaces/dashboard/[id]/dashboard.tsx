@@ -5,6 +5,8 @@ import { parseAndCleanCSV } from "@/lib/csv";
 import UniversalAreaChart from "@/components/charts/area-chart";
 import ChartBarMultiple from "@/components/charts/bar-chart";
 import CustomPieChart from "@/components/charts/pie-chart";
+import ChartRadarDefault from "@/components/charts/radar-chart";
+import ChartRadialSimple from "@/components/charts/radial-chart";
 import { EmptyInputGroup } from "@/components/ui/empty-page";
 // import MapView from "@/components/MapView";
 
@@ -99,6 +101,7 @@ export default function Dashboard({ id }: { id: string }) {
     );
   }
 
+
   return (
     <div className="space-y-6 p-4 w-full max-w-7xl mx-auto">
       {/* Header with file info */}
@@ -128,6 +131,8 @@ export default function Dashboard({ id }: { id: string }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <ChartBarMultiple data={data} />
           <CustomPieChart data={data} showPercentages={false} />
+          <ChartRadarDefault data={data} />
+          <ChartRadialSimple data={data} />
         </div>
       </div>
     </div>
