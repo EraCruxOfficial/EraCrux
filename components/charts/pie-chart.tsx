@@ -24,6 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { DownloadChartButton } from "@/components/charts/DownloadChartButton"
 import { Button } from "@/components/ui/button"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 
@@ -348,11 +349,16 @@ export default function UniversalPieChart({
   const dynamicDescription = description ||
     `Showing ${sliceCount} segment${sliceCount !== 1 ? 's' : ''} with total value of ${formatTooltipValue(totalValue)}`
 
+  const chartRef = React.useRef<HTMLDivElement>(null)
+
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-        <CardDescription>{dynamicDescription}</CardDescription>
+      <CardHeader className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+        <div>
+          <CardTitle>{title}</CardTitle>
+          <CardDescription>{dynamicDescription}</CardDescription>
+        </div>
+        <DownloadChartButton targetRef={chartRef} filename={title} />
       </CardHeader>
 
       {/* Column Selection Controls */}
@@ -361,9 +367,11 @@ export default function UniversalPieChart({
           <div className="grid gap-4 md:grid-cols-2">
             {/* Label Key Selection */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">
-                🏷️ Labels (Categories)
-              </label>
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  🏷️ Labels (Categories)
+                </label>
+              </div>
               <Select value={selectedLabelKey} onValueChange={handleLabelKeyChange}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select label column" />
@@ -422,10 +430,10 @@ export default function UniversalPieChart({
         </CardContent>
       )}
 
-      <CardContent>
+      <CardContent ref={chartRef}>
         {legendPosition === 'top' && <CustomLegend payload={processedData} />}
 
-        <div className="flex">
+        <div className="flex" >
           {legendPosition === 'left' && (
             <div className="mr-4">
               <CustomLegend payload={processedData} />
