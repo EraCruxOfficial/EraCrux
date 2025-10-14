@@ -282,11 +282,11 @@ export default function UniversalPieChart({
       const data = payload[0].payload
       return (
         <div className="bg-white p-3 border rounded-lg shadow-lg">
-          <p className="font-medium">{data.label}</p>
+          <p className="font-medium text-gray-600">{data.label}</p>
           <p className="text-sm text-gray-600">
             Value: {formatTooltipValue(data.value)}
           </p>
-          {showPercentages && (
+          {!showPercentages && (
             <p className="text-sm text-gray-600">
               Percentage: {data.percentage.toFixed(1)}%
             </p>
@@ -318,7 +318,7 @@ export default function UniversalPieChart({
               style={{ backgroundColor: entry.color }}
             />
             <span className="truncate max-w-[120px]" title={entry.value}>
-              {entry.value}
+              {entry.label}
             </span>
             {showPercentages && (
               <span className="text-gray-500 text-xs">
