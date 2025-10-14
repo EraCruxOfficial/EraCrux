@@ -432,7 +432,15 @@ export default function UniversalPieChart({
             </div>
           )}
 
-          <ChartContainer config={chartConfig} className="flex-1" style={{ height: `${height}px` }}>
+          <ChartContainer
+            config={chartConfig}
+            className="flex-1 flex items-center justify-center w-full"
+            style={{
+              height: 'auto',
+              aspectRatio: '1 / 1', // ensures chart stays square
+              maxWidth: '100%',
+            }}
+          >
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 {showTooltip && <ChartTooltip content={<CustomTooltip />} />}
@@ -440,8 +448,8 @@ export default function UniversalPieChart({
                   data={processedData}
                   cx="50%"
                   cy="50%"
-                  innerRadius={innerRadius}
-                  outerRadius={outerRadius}
+                  innerRadius="30%"
+                  outerRadius="80%" // use percentages instead of pixels for responsiveness
                   dataKey="value"
                   nameKey="label"
                 >
@@ -457,6 +465,7 @@ export default function UniversalPieChart({
               </PieChart>
             </ResponsiveContainer>
           </ChartContainer>
+
 
           {legendPosition === 'right' && (
             <div className="ml-4">
