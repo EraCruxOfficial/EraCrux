@@ -104,8 +104,7 @@ export default function AIChatPage() {
           {messages.map((msg, idx) => (
             <div
               key={idx}
-              className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"
-                }`}
+              className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
             >
               {msg.role === "assistant" && (
                 <Avatar className="mr-3">
@@ -115,16 +114,15 @@ export default function AIChatPage() {
 
               <div
                 className={`max-w-[75%] p-3 rounded-2xl text-sm shadow-sm ${msg.role === "user"
-                  ? "bg-blue-600 text-white rounded-br-none"
-                  : "bg-muted text-foreground rounded-bl-none"
-                  }`}
+                    ? "bg-blue-600 text-white rounded-br-none"
+                    : "bg-muted text-foreground rounded-bl-none"
+                  } break-words whitespace-pre-wrap overflow-x-auto`}
               >
                 <div className="prose prose-sm max-w-none dark:prose-invert">
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {msg.content}
                   </ReactMarkdown>
                 </div>
-
               </div>
 
               {msg.role === "user" && (
@@ -134,14 +132,17 @@ export default function AIChatPage() {
               )}
             </div>
           ))}
+
           {loading && (
             <div className="flex justify-start items-center gap-2 text-muted-foreground">
               <Loader2 className="h-4 w-4 animate-spin" />
               Thinking...
             </div>
           )}
+
           <div ref={chatEndRef} />
         </div>
+
       </ScrollArea>
 
       {/* Input Area */}
