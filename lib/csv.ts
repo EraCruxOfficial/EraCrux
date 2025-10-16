@@ -4,7 +4,7 @@ import Papa from "papaparse";
 type CSVRow = Record<string, string | null | undefined>;
 
 function looksNumeric(value: string): boolean {
-  const cleaned = value.replace(/[^0-9.-]/g, ""); // keep digits, dot, minus
+  const cleaned = value.replace(/[^0-9.-]/g, ""); 
   return cleaned !== "" && !isNaN(Number(cleaned));
 }
 
@@ -13,20 +13,31 @@ export function parseAndCleanCSV(csv: string) {
     header: true,
     skipEmptyLines: true,
     dynamicTyping: false,
+    transformHeader: (header: string) => header?.trim(),
   });
 
+  let headers = parsed.meta.fields || [];
+
+  const cleanedHeaders = headers
+    .map((header, idx) => {
+      const trimmed = header?.trim() || "";
+      if (!trimmed) return `Column_${idx + 1}`;
+      return trimmed.replace(/\s+/g, "_").replace(/[^\w]/g, "");
+    })
+    .filter((h) => h && h !== ""); 
+
   const rows: CSVRow[] = parsed.data;
-  const headers = parsed.meta.fields || [];
 
   // Step 1: detect which columns are numeric
   const numericColumns = new Set<string>();
 
-  headers.forEach(header => {
+  cleanedHeaders.forEach((header, i) => {
+    const originalHeader = headers[i];
     let total = 0;
     let numericCount = 0;
 
-    rows.forEach(row => {
-      const rawValue = row[header]?.toString().trim() || "";
+    rows.forEach((row) => {
+      const rawValue = row[originalHeader]?.toString().trim() || "";
       if (rawValue) {
         total++;
         if (looksNumeric(rawValue)) numericCount++;
@@ -38,26 +49,21 @@ export function parseAndCleanCSV(csv: string) {
     }
   });
 
-  // Step 2: clean data
-  const cleanedData = rows.map(row => {
+  const cleanedData = rows.map((row) => {
     const cleaned: Record<string, string | number | null> = {};
 
-    headers.forEach(header => {
-      const safeHeader = header
-        .trim()
-        .replace(/\s+/g, "_")
-        .replace(/[^\w]/g, "");
-
-      const rawValue = row[header]?.toString().trim() || "";
+    cleanedHeaders.forEach((header, i) => {
+      const originalHeader = headers[i];
+      const rawValue = row[originalHeader]?.toString().trim() || "";
 
       if (numericColumns.has(header)) {
         const numericPart = rawValue.replace(/[^0-9.-]/g, "");
-        cleaned[safeHeader] =
+        cleaned[header] =
           numericPart && !isNaN(Number(numericPart))
             ? parseFloat(numericPart)
             : null;
       } else {
-        cleaned[safeHeader] = rawValue;
+        cleaned[header] = rawValue;
       }
     });
 
