@@ -34,11 +34,6 @@ import { Check } from "lucide-react";
 
 // Dynamic color palette for multiple series
 const COLOR_PALETTE = [
-  //   "hsl(var(--chart-1))",
-  //   "hsl(var(--chart-2))",
-  //   "hsl(var(--chart-3))",
-  //   "hsl(var(--chart-4))",
-  //   "hsl(var(--chart-5))",
   "#8884d8",
   "#82ca9d",
   "#ffc658",

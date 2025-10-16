@@ -29,17 +29,28 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Button } from "@/components/ui/button";
 
 const COLOR_PALETTE = [
-  "#8884d8",
-  "#82ca9d",
-  "#ffc658",
-  "#ff7c7c",
-  "#8dd1e1",
-  "#d084d0",
-  "#87d068",
-  "#ffb347",
-  "#87ceeb",
-  "#9370db",
+  "#1E90FF", // Dodger Blue
+  "#00BFFF", // Deep Sky Blue
+  "#4682B4", // Steel Blue
+  "#5F9EA0", // Cadet Blue
+  "#6495ED", // Cornflower Blue
+  "#4169E1", // Royal Blue
+  "#87CEEB", // Sky Blue
+  "#6CA0DC", // Medium Light Blue
+  "#7B68EE", // Medium Slate Blue
+  "#3A75C4", // Blue Crayola
+  "#00CED1", // Dark Turquoise (bluish tone)
+  "#4686E7", // Soft Bright Blue
+  "#4A90E2", // Calm Blue
+  "#355C7D", // Muted Deep Blue
+  "#0096FF", // Vivid Blue
+  "#5DADE2", // Gentle Sky Blue
+  "#1C86EE", // Bright Royal Blue
+  "#73C2FB", // Light Azure
+  "#0D47A1", // Deep Navy Blue
+  "#82CAFF"  // Baby Blue
 ];
+
 
 interface Props {
   data: any[];
@@ -193,11 +204,22 @@ export default function UniversalRadialChart({
 
             {/* Y-Axis Selector */}
             <div className="space-y-2">
-              <div>
+              <div className="flex items-center justify-between">
                 <label className="text-sm font-medium text-gray-700">
                   📈 Metric
                 </label>
+                <div className="pt-3">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={resetToDefaults}
+                    className="text-xs h-6 px-2 shrink-0"
+                  >
+                    Reset
+                  </Button>
+                </div>
               </div>
+
               <Select value={selectedYKey} onValueChange={handleYKeyChange}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select Y-axis column" />
@@ -214,16 +236,7 @@ export default function UniversalRadialChart({
               </Select>
             </div>
           </div>
-          <div className="pt-3">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={resetToDefaults}
-              className="text-xs h-6 px-2 shrink-0"
-            >
-              Reset
-            </Button>
-          </div>
+
         </CardContent>
       )}
 
@@ -260,7 +273,12 @@ export default function UniversalRadialChart({
               <RadialBar
                 dataKey={yKey}
                 background
+                // fill={chartConfig[yKey]?.color}
+                // fillOpacity={0.5}
+
+                // stroke={chartConfig[yKey]?.color}
                 fill={chartConfig[yKey]?.color}
+              // fillOpacity={0.5}
               />
             </RadialBarChart>
           </ResponsiveContainer>

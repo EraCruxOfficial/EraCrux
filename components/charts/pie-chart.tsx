@@ -29,11 +29,27 @@ import { Button } from "@/components/ui/button"
 
 // Enhanced color palette for pie chart segments
 const COLOR_PALETTE = [
-  "#8884d8", "#82ca9d", "#ffc658", "#ff7c7c", "#8dd1e1",
-  "#d084d0", "#87d068", "#a4de6c", "#ffb347", "#87ceeb",
-  "#dda0dd", "#20b2aa", "#ff6347", "#9370db", "#3cb371",
-  "#ffa07a", "#98d8c8", "#f7dc6f", "#bb8fce", "#85c1e9"
-]
+  "#1E90FF", // Dodger Blue
+  "#00BFFF", // Deep Sky Blue
+  "#4682B4", // Steel Blue
+  "#5F9EA0", // Cadet Blue
+  "#6495ED", // Cornflower Blue
+  "#4169E1", // Royal Blue
+  "#87CEEB", // Sky Blue
+  "#6CA0DC", // Medium Light Blue
+  "#7B68EE", // Medium Slate Blue
+  "#3A75C4", // Blue Crayola
+  "#00CED1", // Dark Turquoise (bluish tone)
+  "#4686E7", // Soft Bright Blue
+  "#4A90E2", // Calm Blue
+  "#355C7D", // Muted Deep Blue
+  "#0096FF", // Vivid Blue
+  "#5DADE2", // Gentle Sky Blue
+  "#1C86EE", // Bright Royal Blue
+  "#73C2FB", // Light Azure
+  "#0D47A1", // Deep Navy Blue
+  "#82CAFF"  // Baby Blue
+];
 
 interface DataPoint {
   [key: string]: any
