@@ -9,7 +9,6 @@ const groq = new Groq({ apiKey: process.env.GROQ_API_KEY as string });
 
 export async function POST(req: Request) {
   try {
-    // Parse form data directly (Next.js supports this)
     const formData = await req.formData();
     const file = formData.get("file") as File | null;
     const question = formData.get("question") as string | null;
@@ -17,21 +16,19 @@ export async function POST(req: Request) {
     if (!file || !question) {
       return NextResponse.json({ error: "Missing file or question." }, { status: 400 });
     }
-
-    // Save the uploaded file temporarily to /tmp
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
     const tempPath = path.join("/tmp", file.name);
     await fs.writeFile(tempPath, buffer);
 
-    // Parse CSV
     const csvData = await csv().fromFile(tempPath);
     const sampleData = csvData.slice(0, 5);
 
-    // Create prompt
     const prompt = `
 You are a data analysis assistant.
 Answer questions based on the following CSV data.
+Try  to keep the answers concise and to the point.
+use more numbers and statistics from the csv in your answer.
 
 CSV Data Sample:
 ${JSON.stringify(sampleData)}

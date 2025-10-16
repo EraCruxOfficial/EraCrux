@@ -95,7 +95,6 @@ export default function AIChatPage() {
           <img src="/icon.png" alt="" className="h-7 w-7 rounded-full" />
           <p>CruxAI (Beta)</p>
         </div>
-        <p className="text-xs font-thin">We are in beta testing right now, CruxAI can make mistakes.</p>
       </div>
 
       {/* Chat Area */}
@@ -207,8 +206,9 @@ export default function AIChatPage() {
             {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
           </Button>
         </div>
+        <p className="text-xs font-thin text-center">We are in beta testing right now, CruxAI can make mistakes.</p>
       </form>
-
+      
     </div>
   );
 }
