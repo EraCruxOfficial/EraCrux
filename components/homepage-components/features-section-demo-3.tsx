@@ -19,9 +19,9 @@ export default function FeaturesSectionDemo() {
         "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
     },
     {
-      title: "Easy to manage Data",
+      title: "Fastest AI Data Analysis",
       description:
-        "Swiftly navigate through your data with our powerful search and filter capabilities, ensuring you find what you need in seconds.",
+        "Using cutting-edge AI, our platform analyzes your data in seconds, providing insights that would take hours manually.",
       skeleton: <SkeletonFive />,
       className: "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
     },
@@ -129,11 +129,11 @@ export const SkeletonOne = () => {
 export const SkeletonFive = () => {
   return (
     <div className="relative flex py-8 px-2 gap-10 h-full">
-      <div className="w-full  p-5  mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full">
+      <div className="w-full p-[-1]  mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full">
         <div className="flex flex-1 w-full h-full flex-col space-y-2  ">
           {/* TODO */}
           <img
-            src="/navbar.gif"
+            src="/cruxaiphone.png"
             alt="header"
             width={800}
             height={800}
