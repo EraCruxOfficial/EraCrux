@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { toast } from "sonner";
 import Link from "next/link";
 
 export default function IntegrationPage() {
@@ -20,30 +21,21 @@ export default function IntegrationPage() {
   const router = useRouter();
 
   const handleDrop = async (files: File[]) => {
-    setFiles(files);
-
-    if (files && files.length > 0) {
-      const formData = new FormData();
-      formData.append("file", files[0]);
-
-      try {
-        const res = await fetch("/api/upload", {
-          method: "POST",
-          body: formData,
-        });
-
-        const data = await res.json();
-
-        if (res.ok) {
-          setUploadStatus("✅ File uploaded! Redirecting...");
-          router.push(`/workspaces/dashboard/${data.id}`);
-        } else {
-          setUploadStatus(`❌ Error: ${data.error}`);
-        }
-      } catch (err) {
-        setUploadStatus("❌ Upload failed");
-        console.error(err);
+    if (!files?.length) return;
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    const id = toast.loading("Uploading file...");
+    try {
+      const res = await fetch("/api/upload", { method: "POST", body: formData });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data?.error || "Upload failed");
       }
+      toast.success("File uploaded! Redirecting...", { id });
+      router.push(`/workspaces/dashboard/${data.id}`);
+    } catch (err: any) {
+      toast.error(err?.message || "Upload failed", { id });
+      console.error(err);
     }
   };
 
@@ -53,7 +45,6 @@ export default function IntegrationPage() {
       router.push(`/workspaces/integrations/${service.toLowerCase().replace(" ", "-")}`);
     }, 1000);
   };
-
   return (
     <div className="flex flex-col items-center justify-center w-full gap-6 p-6">
       <h1 className="text-2xl font-semibold text-center">Connect Your Data Source</h1>
@@ -132,15 +123,11 @@ export default function IntegrationPage() {
           <CardContent className="flex flex-col items-center justify-center text-muted-foreground">
             <p className="text-xs mb-2">Coming soon...</p>
             <Link href="https://forms.gle/a6oih3a1p7LZp5w38" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="sm">Request Integration</Button>
+              <Button variant="outline" size="sm">Request Integration</Button>
             </Link>
           </CardContent>
         </Card>
       </div>
-
-      {uploadStatus && (
-        <p className="text-sm text-muted-foreground mt-4">{uploadStatus}</p>
-      )}
     </div>
   );
 }
