@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "EraCrux",
     images: [
       {
-        url: "/hero.png",
+        url: "/Hero.png",
         width: 1200,
         height: 630,
         alt: "Thumbnail preview EraCrux",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "EraCrux",
     description: "Turn raw data into Dashboards in seconds.",
-    images: ["/hero.png"],
+    images: ["/Hero.png"],
   },
 };
 
