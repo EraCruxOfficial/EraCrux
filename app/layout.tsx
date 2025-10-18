@@ -17,7 +17,29 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "EraCrux",
-  description: "Data That Decides.Visualize Signals. Amplify Outcomes.",
+  description: "Turn raw data into Dashboards in seconds.",
+    openGraph: {
+    title: "EraCrux",
+    description: "Turn raw data into Dashboards in seconds.",
+    url: "https://www.eracrux.com/",
+    siteName: "EraCrux",
+    images: [
+      {
+        url: "/hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Thumbnail preview EraCrux",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "EraCrux",
+    description: "Turn raw data into Dashboards in seconds.",
+    images: ["/hero.png"],
+  },
 };
 
 export default function RootLayout({
