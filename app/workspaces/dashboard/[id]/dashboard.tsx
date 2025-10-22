@@ -106,10 +106,10 @@ export default function Dashboard({ id }: { id: string }) {
     <div className="space-y-6 p-4 w-full max-w-7xl mx-auto">
       {/* Header with file info */}
       <div className="border-b pb-4">
-        <h2 className="text-2xl font-bold">Dashboard</h2>
+        <h2 className="text-2xl font-bold">{fileInfo?.filename ?? "Dashboard"}</h2>
         {fileInfo && (
           <div className="mt-2 text-sm text-muted-foreground">
-            <p>File: {fileInfo.filename}</p>
+            {/* <p>File: {fileInfo.filename}</p> */}
             <p>Size: {(fileInfo.metadata.fileSize / 1024).toFixed(2)} KB</p>
             <p>Uploaded: {new Date(fileInfo.metadata.createdAt).toLocaleDateString()}</p>
             <p className="text-xs">Rows: {data.length}</p>
