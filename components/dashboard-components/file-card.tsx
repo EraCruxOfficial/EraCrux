@@ -2,6 +2,7 @@
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { FileChartLine } from "lucide-react"
+import {IconFileTypeCsv} from "@tabler/icons-react";
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import { DropdownMenuDialog } from "../ui/delete-dropdown-menu"
@@ -26,7 +27,7 @@ export function FileCard({ id, filename, createdAt, fileSize }: FileCardProps) {
       <CardHeader className="flex flex-row items-center justify-between">
         {/* Left section: icon + filename + date */}
         <div className="flex items-center gap-3 min-w-0">
-          <FileChartLine className="h-6 w-6 text-primary shrink-0" />
+          <IconFileTypeCsv className="h-6 w-6 text-primary shrink-0" />
           <div className="truncate">
             <CardTitle className="truncate">{filename}</CardTitle>
             <p className="text-xs text-muted-foreground truncate">

@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Loader2, Send, Upload } from "lucide-react";
+import { Loader2, Send, Upload,History } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {
@@ -90,11 +90,12 @@ export default function AIChatPage() {
 
 
       {/* Header */}
-      <div className="border-b p-4 text-center font-semibold text-lg text-foreground shadow-sm flex items-center justify-center gap-1 flex-col">
+      <div className="border-b p-4 text-center font-semibold text-lg text-foreground shadow-sm flex items-center justify-between gap-1 flex-row">
         <div className="flex gap-2">
           <img src="/icon.png" alt="" className="h-7 w-7 rounded-full" />
           <p>CruxAI (Beta)</p>
         </div>
+        <History/>
       </div>
 
       {/* Chat Area */}
