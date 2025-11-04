@@ -137,7 +137,6 @@ Instructions:
 - Cite specific values/statistics from the data
 - If the answer requires information not in the shown rows, state that clearly
 - Use proper formatting for numbers and percentages
-- if the answer needs to have a chart, give the code for react-plotly.js 
 `;
     // Query Groq LLM
     const response = await groq.chat.completions.create({

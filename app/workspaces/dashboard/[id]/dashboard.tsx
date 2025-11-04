@@ -8,6 +8,7 @@ import CustomPieChart from "@/components/charts/pie-chart";
 import ChartRadarDefault from "@/components/charts/radar-chart";
 import ChartRadialSimple from "@/components/charts/radial-chart";
 import { EmptyInputGroup } from "@/components/ui/empty-page";
+import KpiDashboard from "@/components/kpi/kpiDashboard";
 // import MapView from "@/components/MapView";
 
 interface FileMetadata {
@@ -118,6 +119,7 @@ export default function Dashboard({ id }: { id: string }) {
       </div>
 
       <div className="space-y-4">
+        <KpiDashboard data={data} />
         {/* Area chart spanning full width */}
         <div className="w-full">
           <UniversalAreaChart
