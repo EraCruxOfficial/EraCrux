@@ -19,7 +19,7 @@ const navItems: NavItem[] = [
   { name: 'Features', href: '#features' },
   {
     name: 'Products',
-    href: '/products',
+    href: '/login',
     hasDropdown: true,
     dropdownItems: [
       {
