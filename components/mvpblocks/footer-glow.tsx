@@ -119,7 +119,7 @@ export default function FooterGlow() {
             </div>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-foreground/70">
+                <a href="/about-us" className="text-foreground/70">
                   About
                 </a>
               </li>
@@ -134,7 +134,7 @@ export default function FooterGlow() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-foreground/70">
+                <a href="/contact-us" className="text-foreground/70">
                   Contact
                 </a>
               </li>
